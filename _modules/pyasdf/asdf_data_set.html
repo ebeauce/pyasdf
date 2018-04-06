@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.4.0 documentation</title>
+  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.4.x documentation</title>
   
 
   
@@ -40,7 +40,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="pyasdf 0.4.0 documentation" href="../../index.html"/>
+    <link rel="top" title="pyasdf 0.4.x documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.x
               </div>
             
           
@@ -474,8 +474,8 @@
 <div class="viewcode-block" id="ASDFDataSet.flush"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Flush the underlying HDF5 file.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -668,8 +668,8 @@
             <span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">add_auxiliary_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;Files&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
-                                <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span></div>
-                                <span class="n">provenance_id</span><span class="o">=</span><span class="n">provenance_id</span><span class="p">)</span>
+                                <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
+                                <span class="n">provenance_id</span><span class="o">=</span><span class="n">provenance_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.add_auxiliary_data"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data">[docs]</a>    <span class="k">def</span> <span class="nf">add_auxiliary_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span>
                            <span class="n">provenance_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -748,8 +748,8 @@
         <span class="k">if</span> <span class="n">info</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_auxiliary_data_write_collective_information</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_add_auxiliary_data_write_independent_information</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span></div>
-                                                               <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_auxiliary_data_write_independent_information</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span>
+                                                               <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_add_auxiliary_data_get_collective_information</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">tag_path</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">provenance_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -868,8 +868,8 @@
                    <span class="s2">&quot;events cancelled&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">intersection</span><span class="p">))</span>
         <span class="n">old_cat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-</div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">old_cat</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">old_cat</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.get_data_for_tag"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.get_data_for_tag">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_for_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station_name</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -889,8 +889,8 @@
         <span class="n">station</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waveforms</span><span class="p">,</span> <span class="n">station_name</span><span class="p">)</span>
         <span class="n">st</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
         <span class="n">inv</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="s2">&quot;StationXML&quot;</span><span class="p">)</span> \
-            <span class="k">if</span> <span class="s2">&quot;StationXML&quot;</span> <span class="ow">in</span> <span class="n">station</span> <span class="k">else</span> <span class="kc">None</span></div>
-        <span class="k">return</span> <span class="n">st</span><span class="p">,</span> <span class="n">inv</span>
+            <span class="k">if</span> <span class="s2">&quot;StationXML&quot;</span> <span class="ow">in</span> <span class="n">station</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">st</span><span class="p">,</span> <span class="n">inv</span></div>
 
     <span class="k">def</span> <span class="nf">_get_idx_and_size_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waveform_name</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="p">):</span>
         <span class="n">network</span><span class="p">,</span> <span class="n">station</span> <span class="o">=</span> <span class="n">waveform_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
@@ -1189,8 +1189,8 @@
                     <span class="k">del</span> <span class="n">sta_group</span>
                     <span class="k">continue</span>
 
-            <span class="c1"># If this did not work - append.</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_waveforms</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span>
+            <span class="c1"># If this did not work - append.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_waveforms</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.add_waveforms"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms">[docs]</a>    <span class="k">def</span> <span class="nf">add_waveforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">origin_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">magnitude_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">focal_mechanism_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1314,8 +1314,8 @@
                 <span class="n">provenance_id</span><span class="o">=</span><span class="n">provenance_id</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">info</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_add_trace_write_collective_information</span><span class="p">(</span><span class="n">info</span><span class="p">)</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_add_trace_write_independent_information</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">trace</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_trace_write_collective_information</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_trace_write_independent_information</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">trace</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__parse_and_validate_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
         <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -1376,8 +1376,8 @@
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_provenance_group</span><span class="p">[</span><span class="n">document_name</span><span class="p">]</span>
 
         <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">_read_string_array</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="k">as</span> <span class="n">buf</span><span class="p">:</span>
-            <span class="n">doc</span> <span class="o">=</span> <span class="n">prov</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;xml&quot;</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">doc</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">prov</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;xml&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.add_provenance_document"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_provenance_document">[docs]</a>    <span class="k">def</span> <span class="nf">add_provenance_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1422,8 +1422,8 @@
                 <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__compression</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                 <span class="n">compression_opts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__compression</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                 <span class="n">shuffle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__shuffle</span><span class="p">,</span>
-                <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,),</span></div>
-                <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,),</span>
+                <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_add_trace_write_independent_information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">trace</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1683,8 +1683,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_add_inventory_object</span><span class="p">(</span>
                     <span class="n">inv</span><span class="o">=</span><span class="n">merge_inventories</span><span class="p">(</span>
                         <span class="n">inv_a</span><span class="o">=</span><span class="n">existing_inventory</span><span class="p">,</span> <span class="n">inv_b</span><span class="o">=</span><span class="n">stationxml</span><span class="p">,</span>
-                        <span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="o">=</span><span class="n">station_id</span><span class="p">),</span></div>
-                    <span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="o">=</span><span class="n">station_id</span><span class="p">)</span>
+                        <span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="o">=</span><span class="n">station_id</span><span class="p">),</span>
+                    <span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="o">=</span><span class="n">station_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.validate"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1718,8 +1718,8 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">%i</span><span class="s2"> station(s) have no available station information&quot;</span> <span class="o">%</span>
               <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;no_station_information&quot;</span><span class="p">])</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">%i</span><span class="s2"> station(s) with no waveforms&quot;</span> <span class="o">%</span>
-              <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;no_waveforms&quot;</span><span class="p">])</span></div>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">%i</span><span class="s2"> good station(s)&quot;</span> <span class="o">%</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;good_stations&quot;</span><span class="p">])</span>
+              <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;no_waveforms&quot;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">%i</span><span class="s2"> good station(s)&quot;</span> <span class="o">%</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;good_stations&quot;</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.ifilter"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.ifilter">[docs]</a>    <span class="k">def</span> <span class="nf">ifilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">query_objects</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1784,8 +1784,8 @@
                 <span class="n">station_name</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">_station_name</span><span class="p">,</span>
                 <span class="n">asdf_data_set</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">_WaveformAccessor__data_set</span><span class="p">(),</span>
                 <span class="n">filtered_items</span><span class="o">=</span><span class="n">wfs</span><span class="p">)</span>
-</div>
-        <span class="k">raise</span> <span class="ne">StopIteration</span>
+
+        <span class="k">raise</span> <span class="ne">StopIteration</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.process_two_files_without_parallel_output"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.process_two_files_without_parallel_output">[docs]</a>    <span class="k">def</span> <span class="nf">process_two_files_without_parallel_output</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">other_ds</span><span class="p">,</span> <span class="n">process_function</span><span class="p">,</span> <span class="n">traceback_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
@@ -1900,8 +1900,8 @@
         <span class="c1"># Likely not necessary as the gather two line above implies a</span>
         <span class="c1"># barrier but better be safe than sorry.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mpi</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-</div>
-        <span class="k">return</span> <span class="n">results</span>
+
+        <span class="k">return</span> <span class="n">results</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.process"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">process_function</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">,</span> <span class="n">tag_map</span><span class="p">,</span>
                 <span class="n">traceback_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -2015,8 +2015,8 @@
                                           <span class="n">traceback_limit</span><span class="o">=</span><span class="n">traceback_limit</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_processing_multiprocessing</span><span class="p">(</span>
-                <span class="n">process_function</span><span class="p">,</span> <span class="n">output_data_set</span><span class="p">,</span> <span class="n">station_tags</span><span class="p">,</span> <span class="n">tag_map</span><span class="p">,</span></div>
-                <span class="n">traceback_limit</span><span class="o">=</span><span class="n">traceback_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">process_function</span><span class="p">,</span> <span class="n">output_data_set</span><span class="p">,</span> <span class="n">station_tags</span><span class="p">,</span> <span class="n">tag_map</span><span class="p">,</span>
+                <span class="n">traceback_limit</span><span class="o">=</span><span class="n">traceback_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_dispatch_processing_mpi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">process_function</span><span class="p">,</span> <span class="n">output_data_set</span><span class="p">,</span>
                                  <span class="n">station_tags</span><span class="p">,</span> <span class="n">tag_map</span><span class="p">,</span> <span class="n">traceback_limit</span><span class="p">):</span>
@@ -2444,8 +2444,8 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">coords</span><span class="p">[</span><span class="n">station</span><span class="o">.</span><span class="n">_station_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">station</span><span class="o">.</span><span class="n">coordinates</span>
             <span class="k">except</span> <span class="n">NoStationXMLForStation</span><span class="p">:</span>
-                <span class="k">pass</span></div>
-        <span class="k">return</span> <span class="n">coords</span>
+                <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">coords</span></div>
 
 <div class="viewcode-block" id="ASDFDataSet.get_waveforms"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.get_waveforms">[docs]</a>    <span class="k">def</span> <span class="nf">get_waveforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network</span><span class="p">,</span> <span class="n">station</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span>
                       <span class="n">endtime</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">automerge</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -2491,8 +2491,8 @@
 
         <span class="c1"># Cleanup merge - will only merge exactly adjacent traces.</span>
         <span class="k">if</span> <span class="n">automerge</span><span class="p">:</span>
-            <span class="n">st</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">method</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">st</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">method</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">st</span></div></div>
 
 
 <span class="k">class</span> <span class="nc">_Process</span><span class="p">(</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">):</span>
@@ -2624,7 +2624,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.x',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
