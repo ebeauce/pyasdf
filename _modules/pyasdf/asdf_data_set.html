@@ -638,6 +638,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__file</span><span class="p">[</span><span class="s2">&quot;QuakeML&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__file</span><span class="p">[</span><span class="s2">&quot;QuakeML&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">data</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">waveform_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a set with all tags in the dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">get_waveform_tags</span><span class="p">()</span>
+                                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">waveforms</span><span class="p">))</span>
+
 <div class="viewcode-block" id="ASDFDataSet.add_auxiliary_data_file"><a class="viewcode-back" href="../../asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data_file">[docs]</a>    <span class="k">def</span> <span class="nf">add_auxiliary_data_file</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">filename_or_object</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">provenance_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
