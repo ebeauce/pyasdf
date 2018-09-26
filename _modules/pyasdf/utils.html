@@ -31,6 +31,8 @@
   
 
   
+    <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  
 
   
     <link rel="stylesheet" href="../../_static/my-styles.css" type="text/css" />
@@ -1040,22 +1042,27 @@
                     <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)))</span>
             <span class="k">return</span> <span class="n">station</span>
 
-        <span class="c1"># Get an estimate of the total require memory.</span>
-        <span class="n">total_size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_get_idx_and_size_estimate</span><span class="p">(</span>
-                <span class="n">_i</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">])</span>
+        <span class="c1"># Get an estimate of the total require memory. But only estimate it</span>
+        <span class="c1"># if the file is actually larger than the memory as the test is fairly</span>
+        <span class="c1"># expensive but we don&#39;t really care for small files.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">filesize</span> <span class="o">&gt;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">**</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">total_size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_get_idx_and_size_estimate</span><span class="p">(</span>
+                    <span class="n">_i</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">])</span>
 
-        <span class="c1"># Raise an error to not read an extreme amount of data into memory.</span>
-        <span class="k">if</span> <span class="n">total_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;All waveforms for station &#39;</span><span class="si">%s</span><span class="s2">&#39; and item &#39;</span><span class="si">%s</span><span class="s2">&#39; would &quot;</span>
-                   <span class="s2">&quot;require &#39;</span><span class="si">%.2f</span><span class="s2"> MB of memory. The current limit is </span><span class="si">%.2f</span><span class="s2"> &quot;</span>
-                   <span class="s2">&quot;MB. Adjust by setting &quot;</span>
-                   <span class="s2">&quot;&#39;ASDFDataSet.single_item_read_limit_in_mb&#39; or use a &quot;</span>
-                   <span class="s2">&quot;different method to read the waveform data.&quot;</span> <span class="o">%</span> <span class="p">(</span>
-                       <span class="bp">self</span><span class="o">.</span><span class="n">_station_name</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">total_size</span><span class="p">,</span>
-                       <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">))</span>
-            <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="c1"># Raise an error to not read an extreme amount of data into memory.</span>
+            <span class="k">if</span> <span class="n">total_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="s2">&quot;All waveforms for station &#39;</span><span class="si">%s</span><span class="s2">&#39; and item &#39;</span><span class="si">%s</span><span class="s2">&#39; would &quot;</span>
+                    <span class="s2">&quot;require &#39;</span><span class="si">%.2f</span><span class="s2"> MB of memory. The current limit is </span><span class="si">%.2f</span><span class="s2"> &quot;</span>
+                    <span class="s2">&quot;MB. Adjust by setting &quot;</span>
+                    <span class="s2">&quot;&#39;ASDFDataSet.single_item_read_limit_in_mb&#39; or use a &quot;</span>
+                    <span class="s2">&quot;different method to read the waveform data.&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_station_name</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">total_size</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_get_waveform</span><span class="p">(</span><span class="n">_i</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span>
                                                   <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">)</span>
@@ -1518,6 +1525,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

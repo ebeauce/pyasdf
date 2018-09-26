@@ -31,6 +31,8 @@
   
 
   
+    <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  
 
   
     <link rel="stylesheet" href="../../_static/my-styles.css" type="text/css" />
@@ -232,7 +234,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip-3&quot;</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mpi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
-                 <span class="n">single_item_read_limit_in_mb</span><span class="o">=</span><span class="mf">1024.0</span><span class="p">,</span>
+                 <span class="n">single_item_read_limit_in_mb</span><span class="o">=</span><span class="mf">4096.0</span><span class="p">,</span>
                  <span class="n">format_version</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type filename: str</span>
@@ -939,27 +941,38 @@
 <span class="sd">        Retrieves the waveform for a certain path name as a Trace object. For</span>
 <span class="sd">        internal use only, use the dot accessors for outside access.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">idx_start</span><span class="p">,</span> <span class="n">idx_end</span><span class="p">,</span> <span class="n">data_starttime</span><span class="p">,</span> <span class="n">array_size_in_mb</span> <span class="o">=</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">_get_idx_and_size_estimate</span><span class="p">(</span><span class="n">waveform_name</span><span class="p">,</span>
-                                            <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">array_size_in_mb</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;The current selection would read </span><span class="si">%.2f</span><span class="s2"> MB into memory from &quot;</span>
-                   <span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39;. The current limit is </span><span class="si">%.2f</span><span class="s2"> MB. Adjust by setting &quot;</span>
-                   <span class="s2">&quot;&#39;ASDFDataSet.single_item_read_limit_in_mb&#39; or use a &quot;</span>
-                   <span class="s2">&quot;different method to read the waveform data.&quot;</span> <span class="o">%</span> <span class="p">(</span>
-                    <span class="n">array_size_in_mb</span><span class="p">,</span> <span class="n">waveform_name</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">))</span>
-            <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-
         <span class="n">network</span><span class="p">,</span> <span class="n">station</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">waveform_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span><span class="p">[:</span><span class="n">channel</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)]</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file</span><span class="p">[</span><span class="s2">&quot;Waveforms&quot;</span><span class="p">][</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">station</span><span class="p">)][</span>
             <span class="n">waveform_name</span><span class="p">]</span>
+        <span class="c1"># Read once upfront to optmize a bit.</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c1"># Only do the checks if the filesize actually allows for it as its</span>
+        <span class="c1"># fairly expensive or if start or endtime are given.</span>
+        <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="n">starttime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">endtime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">idx_start</span><span class="p">,</span> <span class="n">idx_end</span><span class="p">,</span> <span class="n">data_starttime</span><span class="p">,</span> <span class="n">array_size_in_mb</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_idx_and_size_estimate</span><span class="p">(</span><span class="n">waveform_name</span><span class="p">,</span>
+                                                <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">array_size_in_mb</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;The current selection would read </span><span class="si">%.2f</span><span class="s2"> MB into memory &quot;</span>
+                       <span class="s2">&quot;from &#39;</span><span class="si">%s</span><span class="s2">&#39;. The current limit is </span><span class="si">%.2f</span><span class="s2"> MB. Adjust by &quot;</span>
+                       <span class="s2">&quot;setting &#39;ASDFDataSet.single_item_read_limit_in_mb&#39; or &quot;</span>
+                       <span class="s2">&quot;use a different method to read the waveform data.&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                        <span class="n">array_size_in_mb</span><span class="p">,</span> <span class="n">waveform_name</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">single_item_read_limit_in_mb</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">idx_start</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">idx_end</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">data_starttime</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span><span class="p">(</span>
+                <span class="nb">float</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;starttime&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mf">1.0E9</span><span class="p">)</span>
 
         <span class="n">tr</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">Trace</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">idx_start</span><span class="p">:</span> <span class="n">idx_end</span><span class="p">])</span>
         <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">starttime</span> <span class="o">=</span> <span class="n">data_starttime</span>
-        <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;sampling_rate&quot;</span><span class="p">]</span>
+        <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;sampling_rate&quot;</span><span class="p">]</span>
         <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">network</span>
         <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">station</span> <span class="o">=</span> <span class="n">station</span>
         <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">location</span>
@@ -973,17 +986,17 @@
         <span class="c1"># Read all the ids if they are there.</span>
         <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;event_id&quot;</span><span class="p">,</span> <span class="s2">&quot;origin_id&quot;</span><span class="p">,</span> <span class="s2">&quot;magnitude_id&quot;</span><span class="p">,</span> <span class="s2">&quot;focal_mechanism_id&quot;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">details</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
                         <span class="p">[</span><span class="n">obspy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">ResourceIdentifier</span><span class="p">(</span><span class="n">_i</span><span class="p">)</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span>
-                         <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)])</span>
+                         <span class="n">attrs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)])</span>
 
-        <span class="k">if</span> <span class="s2">&quot;provenance_id&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;provenance_id&quot;</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
             <span class="n">details</span><span class="o">.</span><span class="n">provenance_id</span> <span class="o">=</span> \
-                <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;provenance_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;provenance_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="s2">&quot;labels&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-            <span class="n">details</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labelstring2list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s2">&quot;labels&quot;</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+            <span class="n">details</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labelstring2list</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
 
         <span class="c1"># Add the tag to the stats dictionary.</span>
         <span class="n">details</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">wf_name2tag</span><span class="p">(</span><span class="n">waveform_name</span><span class="p">)</span>
@@ -2641,6 +2654,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

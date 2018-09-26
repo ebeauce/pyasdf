@@ -31,6 +31,8 @@
   
 
   
+    <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  
 
   
     <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
@@ -219,7 +221,7 @@ the rich comparison operators from Python: <code class="docutils literal notrans
 <p>Separate arguments are chained by a logical <code class="docutils literal notranslate"><span class="pre">AND</span></code>, so <strong>every comma can be
 interpreted as a logical</strong> <code class="docutils literal notranslate"><span class="pre">AND</span></code> <strong>.</strong> The following query will iterate over
 all waveforms with a network starting with <code class="docutils literal notranslate"><span class="pre">T</span></code>, but not the <code class="docutils literal notranslate"><span class="pre">TA</span></code>
-(USArray) network. Wildcards are resolved by the <a class="reference external" href="https://docs.python.org/3/library/fnmatch.html#module-fnmatch" title="(in Python v3.6)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a> module.</p>
+(USArray) network. Wildcards are resolved by the <a class="reference external" href="https://docs.python.org/3/library/fnmatch.html#module-fnmatch" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a> module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;T*&quot;</span><span class="p">,</span>
                           <span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">!=</span> <span class="s2">&quot;TA&quot;</span><span class="p">):</span>
     <span class="o">...</span>
@@ -433,6 +435,7 @@ These are not wildcarded as <code class="docutils literal notranslate"><span cla
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
