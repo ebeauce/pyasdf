@@ -160,16 +160,14 @@
   <div class="section" id="module-pyasdf.inventory_utils">
 <span id="inventory-utilities"></span><h1>Inventory Utilities<a class="headerlink" href="#module-pyasdf.inventory_utils" title="Permalink to this headline">¶</a></h1>
 <p>Utilities for dealing with inventory objects.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Lion Krischer (<a class="reference external" href="mailto:krischer&#37;&#52;&#48;geophysik&#46;uni-muenchen&#46;de">krischer<span>&#64;</span>geophysik<span>&#46;</span>uni-muenchen<span>&#46;</span>de</a>), 2015-2018</td>
-</tr>
-<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD 3-Clause (“BSD New” or “BSD Simplified”)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Lion Krischer (<a class="reference external" href="mailto:krischer&#37;&#52;&#48;geophysik&#46;uni-muenchen&#46;de">krischer<span>&#64;</span>geophysik<span>&#46;</span>uni-muenchen<span>&#46;</span>de</a>), 2015-2018</p>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>BSD 3-Clause (“BSD New” or “BSD Simplified”)</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="pyasdf.inventory_utils.get_coordinates">
 <code class="descclassname">pyasdf.inventory_utils.</code><code class="descname">get_coordinates</code><span class="sig-paren">(</span><em>data</em>, <em>level='station'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#get_coordinates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.get_coordinates" title="Permalink to this definition">¶</a></dt>
@@ -185,19 +183,15 @@
 multiple times.</p>
 <p>Returns the processed inventory object. The original one will not be
 changed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>inv</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventory</span></code></a>) – The inventory.</li>
-<li><strong>network_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The network id.</li>
-<li><strong>station_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The station id.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inv</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventory</span></code></a>) – The inventory.</p></li>
+<li><p><strong>network_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The network id.</p></li>
+<li><p><strong>station_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The station id.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -207,20 +201,16 @@ changed.</p>
 contents of a certain network and station id.</p>
 <p>Returns the processed inventory object. The original one will not be
 changed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>inv_a</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventory</span></code></a>) – Inventory A. Contents of that inventory will be prioritized.</li>
-<li><strong>inv_b</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventory</span></code></a>) – Inventory B.</li>
-<li><strong>network_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The network id.</li>
-<li><strong>station_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The station id.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inv_a</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventory</span></code></a>) – Inventory A. Contents of that inventory will be prioritized.</p></li>
+<li><p><strong>inv_b</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventory</span></code></a>) – Inventory B.</p></li>
+<li><p><strong>network_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The network id.</p></li>
+<li><p><strong>station_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The station id.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -275,7 +265,7 @@ changed.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 

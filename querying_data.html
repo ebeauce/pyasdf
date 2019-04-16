@@ -280,105 +280,105 @@ January 2015:</p>
 <h2>Query Types<a class="headerlink" href="#query-types" title="Permalink to this headline">¶</a></h2>
 <p>The available query keys alongside other information regarding their usage are
 listed in the following table:</p>
-<div style="height:10px"></div><table border="1" class="docutils">
+<div style="height:10px"></div><table class="docutils align-center">
 <colgroup>
-<col width="12%" />
-<col width="40%" />
-<col width="48%" />
+<col style="width: 12%" />
+<col style="width: 40%" />
+<col style="width: 48%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Allowed Types</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Allowed Types</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td colspan="3"><strong>String Parameters:</strong>
-These can be given as a single (wildcarded) string or as a list of (wildcarded) strings which will be connected via a logical <code class="docutils literal notranslate"><span class="pre">OR</span></code>.</td>
+<tbody>
+<tr class="row-even"><td colspan="3"><p><strong>String Parameters:</strong>
+These can be given as a single (wildcarded) string or as a list of (wildcarded) strings which will be connected via a logical <code class="docutils literal notranslate"><span class="pre">OR</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">network</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The network code.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">network</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The network code.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">station</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The station code.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">station</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The station code.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">location</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The location code.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">location</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The location code.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The channel code.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">channel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The channel code.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">tag</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The hierarchical tag associated with the trace.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tag</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The hierarchical tag associated with the trace.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">labels</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>Search over the labels of each waveforms.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">labels</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or list of <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Search over the labels of each waveforms.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="3"><strong>Geographical Parameters:</strong>
-Search over geographical parameters stored in the StationXML files.</td>
+<tr class="row-odd"><td colspan="3"><p><strong>Geographical Parameters:</strong>
+Search over geographical parameters stored in the StationXML files.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">longitude</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">float</span></code></td>
-<td>The longitude of the recording station.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The longitude of the recording station.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">latitude</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">float</span></code></td>
-<td>The latitude of the recording station.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The latitude of the recording station.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">elevation_in_m</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">float</span></code></td>
-<td>The elevation in meters of the recording station.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">elevation_in_m</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The elevation in meters of the recording station.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="3"><strong>Temporal Parameters:</strong>
-Pass as a <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></a> object or any string or number that can be parsed to one.</td>
+<tr class="row-odd"><td colspan="3"><p><strong>Temporal Parameters:</strong>
+Pass as a <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></a> object or any string or number that can be parsed to one.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">starttime</span></code></td>
-<td><a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></a>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, or <code class="docutils literal notranslate"><span class="pre">float</span></code></td>
-<td>The start time of the waveform.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">starttime</span></code></p></td>
+<td><p><a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></a>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, or <code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The start time of the waveform.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">endtime</span></code></td>
-<td><a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></a>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, or <code class="docutils literal notranslate"><span class="pre">float</span></code></td>
-<td>The end time of the waveform.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">endtime</span></code></p></td>
+<td><p><a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></a>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, or <code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The end time of the waveform.</p></td>
 </tr>
-<tr class="row-even"><td colspan="3"><strong>Waveform Attribute Parameters:</strong>
-Evaluated per waveform trace. Don’t use <code class="docutils literal notranslate"><span class="pre">==</span></code> for floats but rather a combination of <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>.</td>
+<tr class="row-even"><td colspan="3"><p><strong>Waveform Attribute Parameters:</strong>
+Evaluated per waveform trace. Don’t use <code class="docutils literal notranslate"><span class="pre">==</span></code> for floats but rather a combination of <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">sampling_rate</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">float</span></code></td>
-<td>The sampling rate of the waveform in <em>Hz</em>.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sampling_rate</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The sampling rate of the waveform in <em>Hz</em>.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">npts</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">int</span></code></td>
-<td>The number of samples of the waveform.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">npts</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The number of samples of the waveform.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="3"><strong>Event Relation Parameters:</strong>
-These are not wildcarded as <code class="docutils literal notranslate"><span class="pre">?</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code> are perfectly valid URL components and most IDs are URLs.</td>
+<tr class="row-odd"><td colspan="3"><p><strong>Event Relation Parameters:</strong>
+These are not wildcarded as <code class="docutils literal notranslate"><span class="pre">?</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code> are perfectly valid URL components and most IDs are URLs.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">event</span></code></td>
-<td><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The event associated with the waveform.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">event</span></code></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The event associated with the waveform.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">magnitude</span></code></td>
-<td><code class="xref py py-class docutils literal notranslate"><span class="pre">Magnitude</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The magnitude associated with the waveform.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">magnitude</span></code></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Magnitude</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The magnitude associated with the waveform.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">origin</span></code></td>
-<td><code class="xref py py-class docutils literal notranslate"><span class="pre">Origin</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The origin associated with the waveform.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">origin</span></code></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Origin</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The origin associated with the waveform.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">focal_mechanism</span></code></td>
-<td><code class="xref py py-class docutils literal notranslate"><span class="pre">FocalMechanism</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></td>
-<td>The focal mechanism associated with the waveform.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">focal_mechanism</span></code></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">FocalMechanism</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceIdentifier</span></code>, or <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The focal mechanism associated with the waveform.</p></td>
 </tr>
 </tbody>
 </table>
@@ -435,7 +435,7 @@ These are not wildcarded as <code class="docutils literal notranslate"><span cla
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 

@@ -159,16 +159,14 @@
             
   <div class="section" id="module-pyasdf.utils">
 <span id="utils"></span><h1>Utils<a class="headerlink" href="#module-pyasdf.utils" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Lion Krischer (<a class="reference external" href="mailto:krischer&#37;&#52;&#48;geophysik&#46;uni-muenchen&#46;de">krischer<span>&#64;</span>geophysik<span>&#46;</span>uni-muenchen<span>&#46;</span>de</a>), 2013-2018</td>
-</tr>
-<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD 3-Clause (“BSD New” or “BSD Simplified”)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Lion Krischer (<a class="reference external" href="mailto:krischer&#37;&#52;&#48;geophysik&#46;uni-muenchen&#46;de">krischer<span>&#64;</span>geophysik<span>&#46;</span>uni-muenchen<span>&#46;</span>de</a>), 2013-2018</p>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>BSD 3-Clause (“BSD New” or “BSD Simplified”)</p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="pyasdf.utils.AuxiliaryDataAccessor">
 <em class="property">class </em><code class="descclassname">pyasdf.utils.</code><code class="descname">AuxiliaryDataAccessor</code><span class="sig-paren">(</span><em>auxiliary_data_type</em>, <em>asdf_data_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#AuxiliaryDataAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.AuxiliaryDataAccessor" title="Permalink to this definition">¶</a></dt>
@@ -198,33 +196,26 @@
 <em class="property">class </em><code class="descclassname">pyasdf.utils.</code><code class="descname">JobQueueHelper</code><span class="sig-paren">(</span><em>jobs</em>, <em>worker_names</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#JobQueueHelper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.JobQueueHelper" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple helper class managing job distribution to workers.</p>
 <p>Init with a list of jobs and a list of workers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>jobs</strong> (<em>List of arguments distributed to the jobs.</em>) – A list of jobs that will be distributed to the workers.</li>
-<li><strong>workers</strong> – A list of usually integers, each denoting a worker.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobs</strong> (<em>List of arguments distributed to the jobs.</em>) – A list of jobs that will be distributed to the workers.</p></li>
+<li><p><strong>workers</strong> – A list of usually integers, each denoting a worker.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><p class="first last">list of integers</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>list of integers</p>
+</dd>
+</dl>
 <dl class="method">
 <dt id="pyasdf.utils.JobQueueHelper.get_job_for_worker">
 <code class="descname">get_job_for_worker</code><span class="sig-paren">(</span><em>worker_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#JobQueueHelper.get_job_for_worker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.JobQueueHelper.get_job_for_worker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a job for a worker.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>worker_name</strong> – The name of the worker requesting work.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>worker_name</strong> – The name of the worker requesting work.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -237,19 +228,15 @@
 <dt id="pyasdf.utils.JobQueueHelper.received_job_from_worker">
 <code class="descname">received_job_from_worker</code><span class="sig-paren">(</span><em>arguments</em>, <em>result</em>, <em>worker_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#JobQueueHelper.received_job_from_worker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.JobQueueHelper.received_job_from_worker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call when a worker returned a job.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>arguments</strong> – The arguments the jobs was called with.</li>
-<li><strong>result</strong> – The result of the job</li>
-<li><strong>worker_name</strong> – The name of the worker.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arguments</strong> – The arguments the jobs was called with.</p></li>
+<li><p><strong>result</strong> – The result of the job</p></li>
+<li><p><strong>worker_name</strong> – The name of the worker.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -262,16 +249,13 @@
 <dt id="pyasdf.utils.ProvenanceAccessor.get_provenance_document_for_id">
 <code class="descname">get_provenance_document_for_id</code><span class="sig-paren">(</span><em>provenance_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#ProvenanceAccessor.get_provenance_document_for_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.ProvenanceAccessor.get_provenance_document_for_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the provenance document containing a record with a certain id.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provenance_id</strong> – The id of the provenance record whose
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provenance_id</strong> – The id of the provenance record whose
 containing document is searched. Must be given as a qualified name,
-e.g. <code class="docutils literal notranslate"><span class="pre">'{namespace_uri}id'</span></code>.</td>
-</tr>
-</tbody>
-</table>
+e.g. <code class="docutils literal notranslate"><span class="pre">'{namespace_uri}id'</span></code>.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -401,14 +385,11 @@ version of it.</p>
 <dt id="pyasdf.utils.is_list">
 <code class="descclassname">pyasdf.utils.</code><code class="descname">is_list</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#is_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.is_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>True if the returned object is an iterable but not a string.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>obj</strong> – The object to test.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>obj</strong> – The object to test.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -450,14 +431,11 @@ cannot deal with forked processing.</p>
 <code class="descclassname">pyasdf.utils.</code><code class="descname">split_qualified_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#split_qualified_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.split_qualified_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a qualified name and returns a tuple of namespace, localpart.</p>
 <p>If namespace is not a valid URL, an error will be raised.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – The qualified name.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – The qualified name.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -532,7 +510,7 @@ cannot deal with forked processing.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 
