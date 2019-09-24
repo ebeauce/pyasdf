@@ -241,7 +241,11 @@ uses a round-robin scheme where only one core writes at single point in time.</p
 67
 68
 69
-70</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">obspy</span>
+70
+71
+72
+73
+74</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">obspy</span>
 <span class="kn">from</span> <span class="nn">obspy.core.util.geodetics</span> <span class="kn">import</span> <span class="n">gps2DistAzimuth</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -276,20 +280,26 @@ uses a round-robin scheme where only one core writes at single point in time.</p
         <span class="n">st</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">max_percentage</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">)</span>
 
         <span class="n">st</span><span class="o">.</span><span class="n">attach_response</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">remove_response</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span> <span class="n">pre_filt</span><span class="o">=</span><span class="n">pre_filt</span><span class="p">,</span> <span class="n">zero_mean</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                           <span class="n">taper</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">remove_response</span><span class="p">(</span>
+            <span class="n">output</span><span class="o">=</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span> <span class="n">pre_filt</span><span class="o">=</span><span class="n">pre_filt</span><span class="p">,</span> <span class="n">zero_mean</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="bp">False</span>
+        <span class="p">)</span>
 
         <span class="n">st</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
         <span class="n">st</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="s2">&quot;demean&quot;</span><span class="p">)</span>
         <span class="n">st</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">max_percentage</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">)</span>
 
-        <span class="n">st</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span>
-                       <span class="n">npts</span><span class="o">=</span><span class="n">npts</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
+            <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="n">npts</span>
+        <span class="p">)</span>
 
         <span class="n">station_latitude</span> <span class="o">=</span> <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">latitude</span>
         <span class="n">station_longitude</span> <span class="o">=</span> <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">longitude</span>
-        <span class="n">_</span><span class="p">,</span> <span class="n">baz</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gps2DistAzimuth</span><span class="p">(</span><span class="n">station_latitude</span><span class="p">,</span> <span class="n">station_longitude</span><span class="p">,</span>
-                                    <span class="n">event_latitude</span><span class="p">,</span> <span class="n">event_longitude</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">baz</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gps2DistAzimuth</span><span class="p">(</span>
+            <span class="n">station_latitude</span><span class="p">,</span>
+            <span class="n">station_longitude</span><span class="p">,</span>
+            <span class="n">event_latitude</span><span class="p">,</span>
+            <span class="n">event_longitude</span><span class="p">,</span>
+        <span class="p">)</span>
 
         <span class="n">components</span> <span class="o">=</span> <span class="p">[</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">channel</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">st</span><span class="p">]</span>
         <span class="k">if</span> <span class="s2">&quot;N&quot;</span> <span class="ow">in</span> <span class="n">components</span> <span class="ow">and</span> <span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
@@ -303,9 +313,7 @@ uses a round-robin scheme where only one core writes at single point in time.</p
 
     <span class="n">tag_name</span> <span class="o">=</span> <span class="s2">&quot;preprocessed_</span><span class="si">%i</span><span class="s2">s_to_</span><span class="si">%i</span><span class="s2">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">min_period</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_period</span><span class="p">))</span>
 
-    <span class="n">tag_map</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;raw_recording&quot;</span><span class="p">:</span> <span class="n">tag_name</span>
-    <span class="p">}</span>
+    <span class="n">tag_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;raw_recording&quot;</span><span class="p">:</span> <span class="n">tag_name</span><span class="p">}</span>
 
     <span class="n">ds</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">process_function</span><span class="p">,</span> <span class="n">tag_name</span> <span class="o">+</span> <span class="s2">&quot;.h5&quot;</span><span class="p">,</span> <span class="n">tag_map</span><span class="o">=</span><span class="n">tag_map</span><span class="p">)</span>
 
@@ -334,7 +342,7 @@ uses a round-robin scheme where only one core writes at single point in time.</p
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014-2016, Lion Krischer.
+        &copy; Copyright 2014-2019, Lion Krischer.
 
     </p>
   </div>

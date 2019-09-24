@@ -159,7 +159,7 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="pyasdf-and-dependencies">
 <h2>pyasdf and Dependencies<a class="headerlink" href="#pyasdf-and-dependencies" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> supports Python version 2.7, 3.4, 3.5, and 3.6 and it depends on the
+<p><code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> supports Python version 2.7, 3.4, 3.6, and 3.7 and it depends on the
 following Python modules: <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, <code class="docutils literal notranslate"><span class="pre">ObsPy</span></code>, <code class="docutils literal notranslate"><span class="pre">h5py</span></code>, <code class="docutils literal notranslate"><span class="pre">colorama</span></code>,
 <code class="docutils literal notranslate"><span class="pre">flake8</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, <code class="docutils literal notranslate"><span class="pre">prov</span></code>, <code class="docutils literal notranslate"><span class="pre">dill</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code>. You can
 install <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> with or without parallel I/O support; the later requires
@@ -177,7 +177,8 @@ for your chosen Python version.</p>
 I/O version. For one most machines (aside from actual HPC machines)
 don’t even have the necessary hardware to do actually parallel I/O. Also
 seismological waveform data is usually not that big in volume so a single
-reading/writing thread might be sufficient.</p>
+reading/writing thread might be sufficient. Furthermore modern SSDs can
+write at very high speeds.</p>
 <p>But if your application does indeed benefit from parallel I/O follow the
 instructions below.</p>
 </div>
@@ -193,41 +194,20 @@ as recommended above).</p>
 </div>
 <div class="section" id="pyasdf-with-parallel-i-o">
 <h3><code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> with parallel I/O<a class="headerlink" href="#pyasdf-with-parallel-i-o" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>There currently might be some issues in combination of Python 3 and MPI
-so if you want to utilize parallel I/O best stick to Python 2.7 for now.</p>
-</div>
-<p>The version with parallel I/O support is a bit more difficult as the <code class="docutils literal notranslate"><span class="pre">h5py</span></code>
-installable via <code class="docutils literal notranslate"><span class="pre">conda</span></code> has no parallel I/O support.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda update conda
-$ conda install -c conda-forge obspy colorama pytest pip flake8 dill prov
+<p>You only have to make sure to have a parallel version of <code class="docutils literal notranslate"><span class="pre">h5py</span></code> installed. A
+simple way is to just use one on conda, e.g.:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c spectraldns h5py-parallel
 </pre></div>
 </div>
+<p>Additionally you need <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code>. The one on <code class="docutils literal notranslate"><span class="pre">conda</span></code> might work, if not,
+read on.</p>
 <p>For all of the following steps make sure that the MPI package of your local
 supercomputer/cluster is loaded. The <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> potentially shipping with
-Anaconda might not work on your cluster so uninstall it and reinstall with
-<code class="docutils literal notranslate"><span class="pre">pip</span></code> at which point it should link against your cluster’s MPI
-implementation.</p>
+Anaconda might not work on your cluster - if that is the case uninstall it
+and reinstall with <code class="docutils literal notranslate"><span class="pre">pip</span></code> at which point it should link against your
+cluster’s MPI implementation.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda uninstall mpi4py
 $ pip install mpi4py
-
-<span class="c1"># Also make sure that there is no hdf5 or h5py in the current conda</span>
-<span class="c1"># environment!</span>
-$ conda uninstall h5py hdf5
-</pre></div>
-</div>
-<p>Keep in mind that <code class="docutils literal notranslate"><span class="pre">h5py</span></code> must be compiled with parallel I/O support and that
-it is linked against the same MPI as <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> which of course should be the
-same that is used by your computer.</p>
-<p>Install parallel <code class="docutils literal notranslate"><span class="pre">h5py</span></code> according to
-<a class="reference external" href="http://docs.h5py.org/en/latest/mpi.html">these instructions</a>.</p>
-<p>A further thing to keep in mind is that <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> changed some of their
-internal API for version 2.0. This has to be accounted for when installing the
-parallel <code class="docutils literal notranslate"><span class="pre">h5py</span></code> version. See here for more details:
-<a class="reference external" href="https://github.com/SeismicData/pyasdf/issues/11">https://github.com/SeismicData/pyasdf/issues/11</a></p>
-<p>Finally install <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pyasdf
 </pre></div>
 </div>
 <p>After everything is installed, you can run the following command to print
@@ -256,12 +236,6 @@ information about the current system.</p>
     <span class="n">scipy</span><span class="p">:</span> <span class="mf">0.18</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>This should enable you to judge if <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> can run on your system.
-Especially important is the <em>Parallel I/O support</em> line. If multiprocessing
-is problematic, <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> will not be able to run on more than one machine
-without MPI. Please see
-<a class="reference external" href="https://github.com/obspy/obspy/wiki/Notes-on-Parallel-Processing-with-Python-and-ObsPy">here</a>
-for information about why and how to fix it.</p>
 </div>
 </div>
 <div class="section" id="testing">
@@ -308,7 +282,7 @@ choice.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014-2016, Lion Krischer.
+        &copy; Copyright 2014-2019, Lion Krischer.
 
     </p>
   </div>
