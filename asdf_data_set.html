@@ -176,8 +176,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The filename of the HDF5 file (to be).</p></li>
-<li><p><strong>compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – <p>The compression to use. Defaults to
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The filename of the HDF5 file (to be).</p></li>
+<li><p><strong>compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>The compression to use. Defaults to
 <code class="docutils literal notranslate"><span class="pre">&quot;gzip-3&quot;</span></code> which yielded good results in the past. Will
 only be applied to newly created data sets. Existing ones are not
 touched. Using parallel I/O will also disable compression as it
@@ -194,19 +194,19 @@ but fast) to 9 (best but slow)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;szip-nn-10&quot;</span></code>: szip compression</p></li>
 </ul>
 </p></li>
-<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Turn the shuffle filter on or off. Turning it on
+<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Turn the shuffle filter on or off. Turning it on
 oftentimes increases the compression ratio at the expense of
 some speed.</p></li>
-<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True, print debug messages. Potentially very verbose.</p></li>
-<li><p><strong>mpi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Force MPI on/off. Don’t touch this unless you have a
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If True, print debug messages. Potentially very verbose.</p></li>
+<li><p><strong>mpi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Force MPI on/off. Don’t touch this unless you have a
 reason.</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The mode the file is opened in. Passed to the
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The mode the file is opened in. Passed to the
 underlying <code class="xref py py-class docutils literal notranslate"><span class="pre">h5py.File</span></code> constructor. pyasdf expects to be
 able to write to files for many operations so it might result in
 strange errors if a read-only mode is used. Nonetheless this is
 quite useful for some use cases as long as one is aware of the
 potential repercussions.</p></li>
-<li><p><strong>single_item_read_limit_in_mb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – This limits the amount of waveform
+<li><p><strong>single_item_read_limit_in_mb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – This limits the amount of waveform
 data that can be read with a simple attribute or dictionary
 access. Some ASDF files can get very big and this raises an
 error if one tries to access more then the specified value. This
@@ -240,7 +240,7 @@ given as a qualified name, e.g. <code class="docutils literal notranslate"><span
 </dl>
 <p>The data type is the category of the data and the path the name of
 that particular piece of data within that category.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_auxiliary_data</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_auxiliary_data</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
 <span class="gp">... </span>                      <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;RandomArrays&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                      <span class="n">path</span><span class="o">=</span><span class="s2">&quot;test_data&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                      <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
@@ -255,7 +255,7 @@ that particular piece of data within that category.</p>
 </div>
 <p>The path can contain forward slashes to create a nested hierarchy of
 auxiliary data.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_auxiliary_data</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_auxiliary_data</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
 <span class="gp">... </span>                      <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;RandomArrays&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                      <span class="n">path</span><span class="o">=</span><span class="s2">&quot;some/nested/path/test_data&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                      <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
@@ -301,7 +301,7 @@ given as a qualified name, e.g. <code class="docutils literal notranslate"><span
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>document</strong> (<em>Filename</em><em>, </em><em>file-like objects</em><em> or </em><em>prov document.</em>) – The document to add.</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the document within ASDF. Must be lowercase
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the document within ASDF. Must be lowercase
 alphanumeric with optional underscores. If not given, it will
 autogenerate one. If given and it already exists, it will be
 overwritten.</p></li>
@@ -329,17 +329,17 @@ based on the public ids of the events.</p>
 <p class="rubric">Example</p>
 <p>For now we will create a new ASDF file but one can also use an
 existing one.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">impory</span> <span class="n">pyasdf</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">impory</span> <span class="n">pyasdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">obspy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyasdf</span><span class="o">.</span><span class="n">ASDFDataSet</span><span class="p">(</span><span class="s2">&quot;new_file.h5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>One can add an event either by passing a filename …</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_quakeml</span><span class="p">(</span><span class="s2">&quot;/path/to/quake.xml&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_quakeml</span><span class="p">(</span><span class="s2">&quot;/path/to/quake.xml&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>… or by passing an existing event or catalog object.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read_events</span><span class="p">(</span><span class="s2">&quot;/path/to/quakem.xml&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read_events</span><span class="p">(</span><span class="s2">&quot;/path/to/quakem.xml&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_quakeml</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -372,7 +372,7 @@ object containing the same.</p>
 <li><p><strong>waveform</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a>,
 <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.trace.Trace.html#obspy.core.trace.Trace" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.trace.Trace</span></code></a>, str, …) – The waveform to add. Can either be an ObsPy Stream or
 Trace object or something ObsPy can read.</p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path that will be given to all waveform files. It is
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The path that will be given to all waveform files. It is
 mandatory for all traces and facilitates identification of the data
 within one ASDF volume. The <code class="docutils literal notranslate"><span class="pre">&quot;raw_record&quot;</span></code> path is,
 by convention, reserved to raw, recorded, unprocessed data.</p></li>
@@ -403,7 +403,7 @@ traces. Must not contain a comma as that is used as a separator.</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <p>We first setup an example ASDF file with a single event.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyasdf</span> <span class="k">import</span> <span class="n">ASDFDataSet</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyasdf</span> <span class="kn">import</span> <span class="n">ASDFDataSet</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">ASDFDataSet</span><span class="p">(</span><span class="s2">&quot;event_tests.h5&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_quakeml</span><span class="p">(</span><span class="s2">&quot;quake.xml&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">event</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -416,14 +416,14 @@ observation of that earthquake straight from a datacenter called
 and unproceseed data) and associate it with the event. Keep in mind
 that this association is optional. It can also be associated with
 multiple events - in that case just pass a list of objects.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_waveforms</span><span class="p">(</span><span class="s2">&quot;recording.mseed&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;raw_recording&quot;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_waveforms</span><span class="p">(</span><span class="s2">&quot;recording.mseed&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;raw_recording&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                 <span class="n">event_id</span><span class="o">=</span><span class="n">event</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>It is also possible to directly add
 <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a> objects containing an arbitrary
 number of <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.trace.Trace.html#obspy.core.trace.Trace" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.trace.Trace</span></code></a> objects.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">obspy</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">obspy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">st</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># Reads an example file without argument.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
 <span class="go">3 Trace(s) in Stream:</span>
@@ -434,7 +434,7 @@ number of <a class="reference external" href="http://docs.obspy.org/packages/aut
 </pre></div>
 </div>
 <p>Just to demonstrate that all waveforms can also be retrieved again.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">BW_RJOB</span><span class="o">.</span><span class="n">obspy_example</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">BW_RJOB</span><span class="o">.</span><span class="n">obspy_example</span><span class="p">))</span>
 <span class="go">3 Trace(s) in Stream:</span>
 <span class="go">BW.RJOB..EHZ | 2009-08-24T00:20:03.00Z - ... | 100.0 Hz, 3000 samples</span>
 <span class="go">BW.RJOB..EHN | 2009-08-24T00:20:03.00Z - ... | 100.0 Hz, 3000 samples</span>
@@ -449,7 +449,7 @@ waveform. Please again keep in mind that they are all optional and
 depending on your use case they might or might not be
 useful/meaningful. You can again pass lists of all of these objects
 in which case multiple associations will be stored in the file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">magnitude</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_magnitude</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">focal_mechanism</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_focal_mechansism</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_waveforms</span><span class="p">(</span><span class="s2">&quot;synthetics.sac&quot;</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="n">event</span><span class="p">,</span>
@@ -530,7 +530,7 @@ over.</p>
 <li><p><strong>waveform</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a>,
 <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.trace.Trace.html#obspy.core.trace.Trace" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.trace.Trace</span></code></a>, str, …) – The waveform to add. Can either be an ObsPy Stream
 or Trace object or something ObsPy can read.</p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path that will be given to all waveform files. It is
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The path that will be given to all waveform files. It is
 mandatory for all traces and facilitates identification of the data
 within one ASDF volume. The <code class="docutils literal notranslate"><span class="pre">&quot;raw_record&quot;</span></code> path is,
 by convention, reserved to raw, recorded, unprocessed data.</p></li>
@@ -589,9 +589,9 @@ path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>station_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – A string with network id and station id,
+<li><p><strong>station_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – A string with network id and station id,
 e.g. <code class="docutils literal notranslate"><span class="pre">&quot;IU.ANMO&quot;</span></code></p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path of the waveform.</p></li>
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The path of the waveform.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -626,14 +626,14 @@ this is especially important for large, continuous data sets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The network code. Can contain wildcards.</p></li>
-<li><p><strong>station</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The station code. Can contain wildcards.</p></li>
-<li><p><strong>location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The location code. Can contain wildcards.</p></li>
-<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The channel code. Can contain wildcards.</p></li>
+<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The network code. Can contain wildcards.</p></li>
+<li><p><strong>station</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The station code. Can contain wildcards.</p></li>
+<li><p><strong>location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The location code. Can contain wildcards.</p></li>
+<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The channel code. Can contain wildcards.</p></li>
 <li><p><strong>starttime</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.utcdatetime.UTCDateTime</span></code></a>.) – The time of the first sample.</p></li>
 <li><p><strong>endtime</strong> (<a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.utcdatetime.UTCDateTime</span></code></a>.) – The time of the last sample.</p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The tag to extract.</p></li>
-<li><p><strong>automerge</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Automatically merge adjacent traces if they are
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The tag to extract.</p></li>
+<li><p><strong>automerge</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Automatically merge adjacent traces if they are
 exactly adjacent (e.g. last sample from previous trace + first
 sample of next trace are one delta apart).</p></li>
 </ul>
@@ -647,7 +647,7 @@ sample of next trace are one delta apart).</p></li>
 <dd><p>Return an iterator containing only the filtered information. Usage
 is fairly complex, a separate documentation page for
 <a class="reference internal" href="querying_data.html"><span class="doc">Querying a Data Set</span></a> is available - here is just a quick example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;B?&quot;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;B?&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                          <span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="s2">&quot;*Z&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                          <span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">starttime</span> <span class="o">&gt;=</span> <span class="s2">&quot;2015-01-01&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">...</span>
@@ -684,9 +684,9 @@ An <a class="reference external" href="http://docs.obspy.org/packages/autogen/ob
 <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.inventory.inventory.Inventory</span></code></a> object. It should
 return a <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.1.1) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a> object which will
 then be written to the new file.</p></li>
-<li><p><strong>output_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The output filename. Must not yet exist.</p></li>
-<li><p><strong>tag_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary mapping the input tags to output tags.</p></li>
-<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of the traceback printed if an
+<li><p><strong>output_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The output filename. Must not yet exist.</p></li>
+<li><p><strong>tag_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – A dictionary mapping the input tags to output tags.</p></li>
+<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The length of the traceback printed if an
 error occurs in one of the workers.</p></li>
 </ul>
 </dd>
@@ -709,7 +709,7 @@ each station that is common in both data sets. Please see the
 <li><p><strong>process_function</strong> – The processing function takes two
 parameters: The station group from this data set and the matching
 station group from the other data set.</p></li>
-<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of the traceback printed if an
+<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The length of the traceback printed if an
 error occurs in one of the workers.</p></li>
 </ul>
 </dd>

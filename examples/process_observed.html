@@ -247,7 +247,7 @@ uses a round-robin scheme where only one core writes at single point in time.</p
 73
 74</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">obspy</span>
 <span class="kn">from</span> <span class="nn">obspy.core.util.geodetics</span> <span class="kn">import</span> <span class="n">gps2DistAzimuth</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">pyasdf</span> <span class="kn">import</span> <span class="n">ASDFDataSet</span>
 
@@ -281,7 +281,7 @@ uses a round-robin scheme where only one core writes at single point in time.</p
 
         <span class="n">st</span><span class="o">.</span><span class="n">attach_response</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
         <span class="n">st</span><span class="o">.</span><span class="n">remove_response</span><span class="p">(</span>
-            <span class="n">output</span><span class="o">=</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span> <span class="n">pre_filt</span><span class="o">=</span><span class="n">pre_filt</span><span class="p">,</span> <span class="n">zero_mean</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="bp">False</span>
+            <span class="n">output</span><span class="o">=</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span> <span class="n">pre_filt</span><span class="o">=</span><span class="n">pre_filt</span><span class="p">,</span> <span class="n">zero_mean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
         <span class="n">st</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>

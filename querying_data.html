@@ -191,7 +191,7 @@ self-explanatory.</p>
     <span class="c1"># Extract the StationXML information in the same way as always. Might</span>
     <span class="c1"># be `None` if it does not exists.</span>
     <span class="n">inv</span> <span class="o">=</span> <span class="n">station</span><span class="o">.</span><span class="n">StationXML</span>
-    <span class="k">if</span> <span class="n">inv</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">inv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">continue</span>
 
     <span class="c1"># You can also get the coordinates.</span>
@@ -221,7 +221,7 @@ the rich comparison operators from Python: <code class="docutils literal notrans
 <p>Separate arguments are chained by a logical <code class="docutils literal notranslate"><span class="pre">AND</span></code>, so <strong>every comma can be
 interpreted as a logical</strong> <code class="docutils literal notranslate"><span class="pre">AND</span></code> <strong>.</strong> The following query will iterate over
 all waveforms with a network starting with <code class="docutils literal notranslate"><span class="pre">T</span></code>, but not the <code class="docutils literal notranslate"><span class="pre">TA</span></code>
-(USArray) network. Wildcards are resolved by the <a class="reference external" href="https://docs.python.org/3/library/fnmatch.html#module-fnmatch" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a> module.</p>
+(USArray) network. Wildcards are resolved by the <a class="reference external" href="https://docs.python.org/3/library/fnmatch.html#module-fnmatch" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a> module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;T*&quot;</span><span class="p">,</span>
                           <span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">!=</span> <span class="s2">&quot;TA&quot;</span><span class="p">):</span>
     <span class="o">...</span>
@@ -259,7 +259,7 @@ January 2015:</p>
 </pre></div>
 </div>
 <p>Get waveforms for all stations that have no coordinates:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">latitude</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">latitude</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>

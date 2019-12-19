@@ -202,7 +202,7 @@ straight from a digitizer</strong>.</p>
 
 <span class="go"># Loop over all waveforms in the file with the &quot;example&quot; tag.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;example&quot;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
 <span class="go">Filtered contents of the data set for station BW.RJOB:</span>
 <span class="go">    - Has no StationXML file</span>
 <span class="go">    - 1 Waveform Tag(s):</span>
@@ -236,7 +236,7 @@ example.</p>
 <span class="go"># It is also possible to search for waveforms with a certain label</span>
 <span class="go"># including wildcard searches.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">labels</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;*ä*&quot;</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
 <span class="go">Filtered contents of the data set for station BW.RJOB:</span>
 <span class="go">    - Has no StationXML file</span>
 <span class="go">    - 1 Waveform Tag(s):</span>

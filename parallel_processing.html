@@ -192,7 +192,7 @@ and only one process will write at any point in time.</p>
 
     <span class="c1"># This example will not write anything for data which has no</span>
     <span class="c1"># corresponding inventory information.</span>
-    <span class="k">if</span> <span class="n">inv</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">inv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
 
     <span class="c1"># This very simple example will deconvolve the instrument response.</span>
@@ -313,7 +313,7 @@ traces at each station in both data sets.</p>
 
 <span class="c1"># Results are available on rank 0.</span>
 <span class="k">if</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Save to a file an run with</p>
