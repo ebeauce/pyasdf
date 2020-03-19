@@ -2612,7 +2612,11 @@
         <span class="n">traceback_limit</span><span class="p">,</span>
         <span class="n">cpu_count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="n">ctx</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="s2">&quot;forkserver&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;win32&quot;</span><span class="p">:</span>
+            <span class="n">ctx</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">get_context</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Needed for python 3.8 on unix for some reason.</span>
+            <span class="n">ctx</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="s2">&quot;forkserver&quot;</span><span class="p">)</span>
 
         <span class="n">input_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span>
         <span class="n">output_filename</span> <span class="o">=</span> <span class="n">output_data_set</span><span class="o">.</span><span class="n">filename</span>
