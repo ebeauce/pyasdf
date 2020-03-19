@@ -150,7 +150,7 @@
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">:copyright:</span>
-<span class="sd">    Lion Krischer (lion.krischer@gmail.com), 2013-2019</span>
+<span class="sd">    Lion Krischer (lion.krischer@gmail.com), 2013-2020</span>
 <span class="sd">:license:</span>
 <span class="sd">    BSD 3-Clause (&quot;BSD New&quot; or &quot;BSD Simplified&quot;)</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -170,7 +170,6 @@
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">weakref</span>
 
 <span class="c1"># Py2k/3k compat.</span>
@@ -200,30 +199,6 @@
 <span class="n">Worker</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
     <span class="s2">&quot;Worker&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;active_jobs&quot;</span><span class="p">,</span> <span class="s2">&quot;completed_jobs_count&quot;</span><span class="p">]</span>
 <span class="p">)</span>
-
-
-<div class="viewcode-block" id="get_multiprocessing"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.get_multiprocessing">[docs]</a><span class="k">def</span> <span class="nf">get_multiprocessing</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Helper function returning the multiprocessing module or the threading</span>
-<span class="sd">    version of it.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">is_multiprocessing_problematic</span><span class="p">():</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">&quot;NumPy linked against &#39;Accelerate.framework&#39;. Multiprocessing &quot;</span>
-            <span class="s2">&quot;will be disabled. See &quot;</span>
-            <span class="s2">&quot;https://github.com/obspy/obspy/wiki/Notes-on-Parallel-&quot;</span>
-            <span class="s2">&quot;Processing-with-Python-and-ObsPy for more information.&quot;</span>
-        <span class="p">)</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-        <span class="c1"># Disable by replacing with dummy implementation using threads.</span>
-        <span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
-        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">dummy</span>  <span class="c1"># NOQA</span>
-
-        <span class="n">multiprocessing</span> <span class="o">=</span> <span class="n">dummy</span>
-        <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">multiprocessing</span>  <span class="c1"># NOQA</span>
-    <span class="k">return</span> <span class="n">multiprocessing</span></div>
 
 
 <div class="viewcode-block" id="is_multiprocessing_problematic"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.is_multiprocessing_problematic">[docs]</a><span class="k">def</span> <span class="nf">is_multiprocessing_problematic</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
@@ -1286,7 +1261,7 @@
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<div class="viewcode-block" id="StreamBuffer"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.StreamBuffer">[docs]</a><span class="k">class</span> <span class="nc">StreamBuffer</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">MutableMapping</span><span class="p">):</span>
+<div class="viewcode-block" id="StreamBuffer"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.StreamBuffer">[docs]</a><span class="k">class</span> <span class="nc">StreamBuffer</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MutableMapping</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Very simple key value store for obspy stream object with the additional</span>
 <span class="sd">    ability to approximate the size of all stored stream objects.</span>
@@ -1628,7 +1603,7 @@
 
 <span class="sd">    :param obj: The object to test.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
         <span class="n">obj</span><span class="p">,</span> <span class="n">string_types</span>
     <span class="p">)</span></div>
 
@@ -1669,7 +1644,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014-2019, Lion Krischer.
+        &copy; Copyright 2014-2020, Lion Krischer.
 
     </p>
   </div>

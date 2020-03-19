@@ -152,7 +152,7 @@
 <span class="sd">Python implementation of the Adaptable Seismic Data Format (ASDF).</span>
 
 <span class="sd">:copyright:</span>
-<span class="sd">    Lion Krischer (lion.krischer@gmail.com), 2013-2019</span>
+<span class="sd">    Lion Krischer (lion.krischer@gmail.com), 2013-2020</span>
 <span class="sd">:license:</span>
 <span class="sd">    BSD 3-Clause (&quot;BSD New&quot; or &quot;BSD Simplified&quot;)</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -190,25 +190,6 @@
 <span class="kn">import</span> <span class="nn">prov.model</span>
 
 
-<span class="c1"># Minimum compatibility wrapper between Python 2 and 3.</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">filter</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">ifilter</span>
-<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-    <span class="c1"># Python 3 is a bit more aggressive when buffering warnings but here it</span>
-    <span class="c1"># is fairly important that they are shown, thus we monkey-patch it to</span>
-    <span class="c1"># flush stderr afterwards.</span>
-    <span class="k">def</span> <span class="nf">get_warning_fct</span><span class="p">():</span>
-        <span class="n">closure_warn</span> <span class="o">=</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span>
-
-        <span class="k">def</span> <span class="nf">__warn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">closure_warn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="n">__warn</span>
-
-    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span> <span class="o">=</span> <span class="n">get_warning_fct</span><span class="p">()</span>
-
-
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">ASDFException</span><span class="p">,</span>
     <span class="n">ASDFWarning</span><span class="p">,</span>
@@ -239,7 +220,6 @@
     <span class="n">StreamBuffer</span><span class="p">,</span>
     <span class="n">AuxiliaryDataGroupAccessor</span><span class="p">,</span>
     <span class="n">AuxiliaryDataContainer</span><span class="p">,</span>
-    <span class="n">get_multiprocessing</span><span class="p">,</span>
     <span class="n">ProvenanceAccessor</span><span class="p">,</span>
     <span class="n">split_qualified_name</span><span class="p">,</span>
     <span class="n">_read_string_array</span><span class="p">,</span>
@@ -1063,7 +1043,12 @@
             <span class="ow">or</span> <span class="n">starttime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="ow">or</span> <span class="n">endtime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="p">):</span>
-            <span class="n">idx_start</span><span class="p">,</span> <span class="n">idx_end</span><span class="p">,</span> <span class="n">data_starttime</span><span class="p">,</span> <span class="n">array_size_in_mb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_idx_and_size_estimate</span><span class="p">(</span>  <span class="c1"># NOQA</span>
+            <span class="p">(</span>
+                <span class="n">idx_start</span><span class="p">,</span>
+                <span class="n">idx_end</span><span class="p">,</span>
+                <span class="n">data_starttime</span><span class="p">,</span>
+                <span class="n">array_size_in_mb</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_idx_and_size_estimate</span><span class="p">(</span>  <span class="c1"># NOQA</span>
                 <span class="n">waveform_name</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span>
             <span class="p">)</span>
 
@@ -2165,7 +2150,7 @@
         <span class="n">output_filename</span><span class="p">,</span>
         <span class="n">tag_map</span><span class="p">,</span>
         <span class="n">traceback_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">kwargs</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Process the contents of an ``ASDF`` file in parallel.</span>
@@ -2279,7 +2264,7 @@
                 <span class="n">output_data_set</span><span class="p">,</span>
                 <span class="n">station_tags</span><span class="p">,</span>
                 <span class="n">tag_map</span><span class="p">,</span>
-                <span class="n">traceback_limit</span><span class="o">=</span><span class="n">traceback_limit</span>
+                <span class="n">traceback_limit</span><span class="o">=</span><span class="n">traceback_limit</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_processing_multiprocessing</span><span class="p">(</span>
@@ -2288,7 +2273,7 @@
                 <span class="n">station_tags</span><span class="p">,</span>
                 <span class="n">tag_map</span><span class="p">,</span>
                 <span class="n">traceback_limit</span><span class="o">=</span><span class="n">traceback_limit</span><span class="p">,</span>
-                <span class="o">**</span><span class="n">kwargs</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
             <span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_dispatch_processing_mpi</span><span class="p">(</span>
@@ -2627,7 +2612,7 @@
         <span class="n">traceback_limit</span><span class="p">,</span>
         <span class="n">cpu_count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="n">multiprocessing</span> <span class="o">=</span> <span class="n">get_multiprocessing</span><span class="p">()</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="s2">&quot;forkserver&quot;</span><span class="p">)</span>
 
         <span class="n">input_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span>
         <span class="n">output_filename</span> <span class="o">=</span> <span class="n">output_data_set</span><span class="o">.</span><span class="n">filename</span>
@@ -2643,21 +2628,21 @@
 
         <span class="c1"># Lock for input and output files. Probably not needed for the input</span>
         <span class="c1"># files but better be safe.</span>
-        <span class="n">input_file_lock</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
-        <span class="n">output_file_lock</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="n">input_file_lock</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="n">output_file_lock</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
 
         <span class="c1"># Also lock the printing on screen to not mangle the output.</span>
-        <span class="n">print_lock</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="n">print_lock</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
 
         <span class="c1"># Use either the given number of cores or the maximum number of cores.</span>
         <span class="k">if</span> <span class="n">cpu_count</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">cpu_count</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+            <span class="n">cpu_count</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
 
         <span class="c1"># Don&#39;t use more cores than jobs.</span>
         <span class="n">cpu_count</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">cpu_count</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">station_tags</span><span class="p">))</span>
 
         <span class="c1"># Create the input queue containing the jobs.</span>
-        <span class="n">input_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">JoinableQueue</span><span class="p">(</span>
+        <span class="n">input_queue</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">JoinableQueue</span><span class="p">(</span>
             <span class="n">maxsize</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">1.1</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">station_tags</span><span class="p">)</span> <span class="o">+</span> <span class="n">cpu_count</span><span class="p">)))</span>
         <span class="p">)</span>
 
@@ -2672,7 +2657,7 @@
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
         <span class="c1"># The output queue will collect the reports from the jobs.</span>
-        <span class="n">output_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="n">output_queue</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
 
         <span class="c1"># Create n processes, with n being the number of available CPUs.</span>
         <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2888,11 +2873,15 @@
 
             <span class="n">station</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">stationtag</span>
 
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__process_name</span>
             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file_lock</span><span class="p">:</span>
-                <span class="n">input_data_set</span> <span class="o">=</span> <span class="n">ASDFDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_filename</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;TRYING TO OPEN FILE.&quot;</span><span class="p">)</span>
+                <span class="n">input_data_set</span> <span class="o">=</span> <span class="n">ASDFDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;OPENED FILE&quot;</span><span class="p">)</span>
                 <span class="n">stream</span><span class="p">,</span> <span class="n">inv</span> <span class="o">=</span> <span class="n">input_data_set</span><span class="o">.</span><span class="n">get_data_for_tag</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
                 <span class="n">input_data_set</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
                 <span class="k">del</span> <span class="n">input_data_set</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;DELETE FILE&quot;</span><span class="p">)</span>
 
             <span class="c1"># Using dill as it works on more systems.</span>
             <span class="n">func</span> <span class="o">=</span> <span class="n">dill</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_function</span><span class="p">)</span>
@@ -2952,7 +2941,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014-2019, Lion Krischer.
+        &copy; Copyright 2014-2020, Lion Krischer.
 
     </p>
   </div>
