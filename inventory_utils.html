@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Inventory Utilities &mdash; pyasdf 0.6.0 documentation</title>
+  <title>Inventory Utilities &mdash; pyasdf 0.6.1 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pyasdf 0.6.0 documentation" href="index.html"/>
+    <link rel="top" title="pyasdf 0.6.1 documentation" href="index.html"/>
         <link rel="up" title="API" href="api.html"/>
         <link rel="next" title="Query" href="query.html"/>
         <link rel="prev" title="Exceptions" href="exceptions.html"/> 
@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -168,16 +168,16 @@
 <dd class="field-even"><p>BSD 3-Clause (“BSD New” or “BSD Simplified”)</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="pyasdf.inventory_utils.get_coordinates">
-<code class="sig-prename descclassname">pyasdf.inventory_utils.</code><code class="sig-name descname">get_coordinates</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">level='station'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#get_coordinates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.get_coordinates" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pyasdf.inventory_utils.</code><code class="sig-name descname">get_coordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">'station'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#get_coordinates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.get_coordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Very quick way to get coordinates from a StationXML file.</p>
 <p>Can extract coordinates at the station and at the channel level.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="pyasdf.inventory_utils.isolate_and_merge_station">
-<code class="sig-prename descclassname">pyasdf.inventory_utils.</code><code class="sig-name descname">isolate_and_merge_station</code><span class="sig-paren">(</span><em class="sig-param">inv</em>, <em class="sig-param">network_id</em>, <em class="sig-param">station_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#isolate_and_merge_station"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.isolate_and_merge_station" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pyasdf.inventory_utils.</code><code class="sig-name descname">isolate_and_merge_station</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inv</span></em>, <em class="sig-param"><span class="n">network_id</span></em>, <em class="sig-param"><span class="n">station_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#isolate_and_merge_station"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.isolate_and_merge_station" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes an inventory object, isolates the given station and merged them.</p>
 <p>Merging is sometimes necessary as many files have the same station
 multiple times.</p>
@@ -194,9 +194,9 @@ changed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="pyasdf.inventory_utils.merge_inventories">
-<code class="sig-prename descclassname">pyasdf.inventory_utils.</code><code class="sig-name descname">merge_inventories</code><span class="sig-paren">(</span><em class="sig-param">inv_a</em>, <em class="sig-param">inv_b</em>, <em class="sig-param">network_id</em>, <em class="sig-param">station_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#merge_inventories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.merge_inventories" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pyasdf.inventory_utils.</code><code class="sig-name descname">merge_inventories</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inv_a</span></em>, <em class="sig-param"><span class="n">inv_b</span></em>, <em class="sig-param"><span class="n">network_id</span></em>, <em class="sig-param"><span class="n">station_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/inventory_utils.html#merge_inventories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.inventory_utils.merge_inventories" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes two inventories, merges the contents of both and isolates the
 contents of a certain network and station id.</p>
 <p>Returns the processed inventory object. The original one will not be
@@ -256,7 +256,7 @@ changed.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.6.0',
+            VERSION:'0.6.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
