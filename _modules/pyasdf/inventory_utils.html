@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyasdf.inventory_utils &mdash; pyasdf 0.6.1 documentation</title>
+  <title>pyasdf.inventory_utils &mdash; pyasdf 0.7.0 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="pyasdf 0.6.1 documentation" href="../../index.html"/>
+    <link rel="top" title="pyasdf 0.7.0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.7.0
               </div>
             
           
@@ -214,7 +214,8 @@
         <span class="n">inv</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_id</span><span class="p">,</span> <span class="n">keep_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="c1"># Merge networks if necessary.</span>
+    <span class="c1"># Merge networks if necessary. It should be safe to always merge networks</span>
+    <span class="c1"># with the same code.</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">network</span> <span class="o">=</span> <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">other_network</span> <span class="ow">in</span> <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
@@ -265,80 +266,85 @@
             <span class="p">)</span>
         <span class="n">inv</span><span class="o">.</span><span class="n">networks</span> <span class="o">=</span> <span class="p">[</span><span class="n">network</span><span class="p">]</span>
 
-    <span class="c1"># Merge stations if necessary.</span>
+    <span class="k">def</span> <span class="nf">_check_stations_meta_equal</span><span class="p">(</span><span class="n">station_a</span><span class="p">,</span> <span class="n">station_b</span><span class="p">):</span>
+        <span class="c1"># Shallow copies.</span>
+        <span class="n">content_a</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">station_a</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="n">content_b</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">station_b</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">content_a</span><span class="p">,</span> <span class="n">content_b</span><span class="p">]:</span>
+            <span class="c1"># Get rid of keys we don&#39;t want to test.</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;channels&quot;</span><span class="p">,</span> <span class="s2">&quot;start_date&quot;</span><span class="p">,</span> <span class="s2">&quot;end_date&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">content_a</span> <span class="o">==</span> <span class="n">content_b</span>
+
+    <span class="c1"># Merge stations if possible.</span>
+    <span class="c1"># Stations will only be merged if all station attributes except start_date,</span>
+    <span class="c1"># end_date and channels are identical. Otherwise this would be considered a</span>
+    <span class="c1"># station epoch here. There is probably no correct way to do this but this</span>
+    <span class="c1"># is what we are doing here.</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">station</span> <span class="o">=</span> <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">other_station</span> <span class="ow">in</span> <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-            <span class="c1"># Merge the channels.</span>
-            <span class="n">station</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">other_station</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span>
-            <span class="c1"># Update the times if necessary.</span>
-            <span class="k">if</span> <span class="n">other_station</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span>
-                    <span class="n">station</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">is</span> <span class="kc">None</span>
-                    <span class="ow">or</span> <span class="n">station</span><span class="o">.</span><span class="n">start_date</span> <span class="o">&gt;</span> <span class="n">other_station</span><span class="o">.</span><span class="n">start_date</span>
-                <span class="p">):</span>
-                    <span class="n">station</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">other_station</span><span class="o">.</span><span class="n">start_date</span>
-            <span class="c1"># None is the &quot;biggest&quot; end_date.</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="n">station</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                <span class="ow">and</span> <span class="n">other_station</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="p">):</span>
-                <span class="k">if</span> <span class="n">other_station</span><span class="o">.</span><span class="n">end_date</span> <span class="o">&gt;</span> <span class="n">station</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
-                    <span class="n">station</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">other_station</span><span class="o">.</span><span class="n">end_date</span>
-            <span class="k">elif</span> <span class="n">other_station</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">station</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="c1"># Update comments.</span>
-            <span class="n">station</span><span class="o">.</span><span class="n">comments</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-                <span class="nb">set</span><span class="p">(</span><span class="n">station</span><span class="o">.</span><span class="n">comments</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">other_station</span><span class="o">.</span><span class="n">comments</span><span class="p">))</span>
-            <span class="p">)</span>
-            <span class="c1"># Update the number of channels.</span>
-            <span class="k">if</span> <span class="n">other_station</span><span class="o">.</span><span class="n">total_number_of_channels</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span>
-                    <span class="n">station</span><span class="o">.</span><span class="n">total_number_of_channels</span>
-                    <span class="ow">or</span> <span class="n">station</span><span class="o">.</span><span class="n">total_number_of_channels</span>
-                    <span class="o">&lt;</span> <span class="n">other_station</span><span class="o">.</span><span class="n">total_number_of_channels</span>
-                <span class="p">):</span>
-                    <span class="n">station</span><span class="o">.</span><span class="n">total_number_of_channels</span> <span class="o">=</span> <span class="p">(</span>
-                        <span class="n">other_station</span><span class="o">.</span><span class="n">total_number_of_channels</span>
-                    <span class="p">)</span>
-            <span class="c1"># Update the other elements</span>
-            <span class="n">station</span><span class="o">.</span><span class="n">alternate_code</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">station</span><span class="o">.</span><span class="n">alternate_code</span> <span class="ow">or</span> <span class="n">other_station</span><span class="o">.</span><span class="n">alternate_code</span>
-            <span class="p">)</span> <span class="ow">or</span> <span class="kc">None</span>
-            <span class="n">station</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">station</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="n">other_station</span><span class="o">.</span><span class="n">description</span>
-            <span class="p">)</span> <span class="ow">or</span> <span class="kc">None</span>
-            <span class="n">station</span><span class="o">.</span><span class="n">historical_code</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">station</span><span class="o">.</span><span class="n">historical_code</span> <span class="ow">or</span> <span class="n">other_station</span><span class="o">.</span><span class="n">historical_code</span>
-            <span class="p">)</span> <span class="ow">or</span> <span class="kc">None</span>
-            <span class="n">station</span><span class="o">.</span><span class="n">restricted_status</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">station</span><span class="o">.</span><span class="n">restricted_status</span> <span class="ow">or</span> <span class="n">other_station</span><span class="o">.</span><span class="n">restricted_status</span>
-            <span class="p">)</span>
-        <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="n">station</span><span class="p">]</span>
+        <span class="c1"># Always keep the first one.</span>
+        <span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="c1"># Now loop over others, see if they match an existing one and add the</span>
+        <span class="c1"># channels while adjusting start and end times.</span>
+        <span class="k">for</span> <span class="n">new_station</span> <span class="ow">in</span> <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">_check_stations_meta_equal</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">new_station</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="c1"># Here we have a station where everything except the channels</span>
+                <span class="c1"># and start and end date are identical. Merge both.</span>
 
-    <span class="c1"># Last but not least, remove duplicate channels. This is done on the</span>
-    <span class="c1"># location and channel id, and the times, nothing else.</span>
-    <span class="n">unique_channels</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">available_channel_hashes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">c_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span>
-            <span class="p">(</span>
-                <span class="nb">str</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">start_date</span><span class="p">),</span>
-                <span class="nb">str</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">end_date</span><span class="p">),</span>
-                <span class="n">channel</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
-                <span class="n">channel</span><span class="o">.</span><span class="n">location_code</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">c_hash</span> <span class="ow">in</span> <span class="n">available_channel_hashes</span><span class="p">:</span>
-            <span class="k">continue</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">unique_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
-            <span class="n">available_channel_hashes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_hash</span><span class="p">)</span>
-    <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">unique_channels</span>
+                <span class="c1"># Update the times if necessary. Update the start date if the</span>
+                <span class="c1"># start date from the new station is earlier than the existing</span>
+                <span class="c1"># start date or if there is no existing start date.</span>
+                <span class="k">if</span> <span class="n">new_station</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">s</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">is</span> <span class="kc">None</span>
+                        <span class="ow">or</span> <span class="n">s</span><span class="o">.</span><span class="n">start_date</span> <span class="o">&gt;</span> <span class="n">new_station</span><span class="o">.</span><span class="n">start_date</span>
+                    <span class="p">):</span>
+                        <span class="n">s</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">new_station</span><span class="o">.</span><span class="n">start_date</span>
+                <span class="c1"># None is the &quot;biggest&quot; end_date.</span>
+                <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">new_station</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">new_station</span><span class="o">.</span><span class="n">end_date</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
+                        <span class="n">s</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">new_station</span><span class="o">.</span><span class="n">end_date</span>
+                <span class="k">elif</span> <span class="n">new_station</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">s</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c1"># Update the selected number of stations and channels.</span>
-    <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">selected_number_of_stations</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">selected_number_of_channels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span>
+                <span class="c1"># Merge the channels.</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_station</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span>
+
+                <span class="c1"># Finally break the loop because the station has been dealt</span>
+                <span class="c1"># with.</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_station</span><span class="p">)</span>
+
+        <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span> <span class="o">=</span> <span class="n">stations</span>
+
+    <span class="c1"># Last but not least, remove duplicate channels for each station. This is</span>
+    <span class="c1"># done on the location and channel id, and the times, nothing else.</span>
+    <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stations</span><span class="p">:</span>
+        <span class="n">unique_channels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">available_channel_hashes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">station</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span>
+            <span class="n">c_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">start_date</span><span class="p">),</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">channel</span><span class="o">.</span><span class="n">end_date</span><span class="p">),</span>
+                    <span class="n">channel</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+                    <span class="n">channel</span><span class="o">.</span><span class="n">location_code</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">c_hash</span> <span class="ow">in</span> <span class="n">available_channel_hashes</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">unique_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                <span class="n">available_channel_hashes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_hash</span><span class="p">)</span>
+        <span class="n">station</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">unique_channels</span>
+
+    <span class="c1"># # Update the selected number of stations and channels.</span>
+    <span class="c1"># inv[0].selected_number_of_stations = 1</span>
+    <span class="c1"># inv[0][0].selected_number_of_channels = len(inv[0][0].channels)</span>
 
     <span class="k">return</span> <span class="n">inv</span></div>
 
@@ -482,7 +488,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.6.1',
+            VERSION:'0.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
