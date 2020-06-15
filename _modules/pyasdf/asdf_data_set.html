@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.7.0 documentation</title>
+  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.7.1 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="pyasdf 0.7.0 documentation" href="../../index.html"/>
+    <link rel="top" title="pyasdf 0.7.1 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.7.1
               </div>
             
           
@@ -1821,13 +1821,32 @@
 
         <span class="k">return</span> <span class="n">inv</span>
 
+    <span class="k">def</span> <span class="nf">_get_namespace_map_stationxml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inv</span><span class="p">):</span>
+        <span class="n">nsmap</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">nsmap</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;namespace&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">net</span> <span class="ow">in</span> <span class="n">inv</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">nsmap</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;namespace&quot;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">sta</span> <span class="ow">in</span> <span class="n">net</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sta</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">nsmap</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;namespace&quot;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">cha</span> <span class="ow">in</span> <span class="n">sta</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cha</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">nsmap</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;namespace&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">nsmap</span>
+
     <span class="k">def</span> <span class="nf">_add_inventory_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="p">):</span>
         <span class="n">station_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="p">)</span>
 
         <span class="c1"># Write the station information to a numpy array that will then be</span>
         <span class="c1"># written to the HDF5 file.</span>
         <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span> <span class="k">as</span> <span class="n">buf</span><span class="p">:</span>
-            <span class="n">inv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;stationxml&quot;</span><span class="p">)</span>
+            <span class="n">inv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="n">buf</span><span class="p">,</span>
+                <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;stationxml&quot;</span><span class="p">,</span>
+                <span class="n">nsmap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_namespace_map_stationxml</span><span class="p">(</span><span class="n">inv</span><span class="p">),</span>
+            <span class="p">)</span>
             <span class="n">buf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s2">&quot;byte&quot;</span><span class="p">))</span>
 
@@ -2967,7 +2986,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.7.0',
+            VERSION:'0.7.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
