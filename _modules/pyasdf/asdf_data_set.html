@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.7.1 documentation</title>
+  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.7.2 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="pyasdf 0.7.1 documentation" href="../../index.html"/>
+    <link rel="top" title="pyasdf 0.7.2 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                0.7.1
+                0.7.2
               </div>
             
           
@@ -1094,12 +1094,12 @@
                     <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
                     <span class="p">[</span>
                         <span class="n">obspy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">ResourceIdentifier</span><span class="p">(</span><span class="n">_i</span><span class="p">)</span>
-                        <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
                     <span class="p">],</span>
                 <span class="p">)</span>
 
         <span class="k">if</span> <span class="s2">&quot;provenance_id&quot;</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-            <span class="n">details</span><span class="o">.</span><span class="n">provenance_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;provenance_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="n">details</span><span class="o">.</span><span class="n">provenance_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;provenance_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="s2">&quot;labels&quot;</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
             <span class="n">details</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labelstring2list</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
@@ -2986,7 +2986,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.7.1',
+            VERSION:'0.7.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
