@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.7.2 documentation</title>
+  <title>pyasdf.asdf_data_set &mdash; pyasdf 0.7.3 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="pyasdf 0.7.2 documentation" href="../../index.html"/>
+    <link rel="top" title="pyasdf 0.7.3 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                0.7.2
+                0.7.3
               </div>
             
           
@@ -2256,9 +2256,7 @@
                         <span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">group</span> <span class="o">=</span> <span class="n">output_data_set</span><span class="o">.</span><span class="n">_waveform_group</span><span class="p">[</span><span class="n">station_name</span><span class="p">]</span>
-                    <span class="n">station_group</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
-                        <span class="n">source</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;StationXML&quot;</span>
-                    <span class="p">)</span>
+                    <span class="n">group</span><span class="p">[</span><span class="s2">&quot;StationXML&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:]</span>
 
             <span class="c1"># Copy the events.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
@@ -2986,7 +2984,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.7.2',
+            VERSION:'0.7.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
