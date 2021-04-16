@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Querying a Data Set &mdash; pyasdf 0.7.4 documentation</title>
+  <title>Querying a Data Set &mdash; pyasdf 0.7.5 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pyasdf 0.7.4 documentation" href="index.html"/>
+    <link rel="top" title="pyasdf 0.7.5 documentation" href="index.html"/>
         <link rel="up" title="Detailed Explanations" href="detailed_explanations.html"/>
         <link rel="next" title="Working With Station Data" href="station_data.html"/>
         <link rel="prev" title="Of Tags and Labels" href="of_tags_and_labels.html"/> 
@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                0.7.4
+                0.7.5
               </div>
             
           
@@ -221,7 +221,7 @@ the rich comparison operators from Python: <code class="docutils literal notrans
 <p>Separate arguments are chained by a logical <code class="docutils literal notranslate"><span class="pre">AND</span></code>, so <strong>every comma can be
 interpreted as a logical</strong> <code class="docutils literal notranslate"><span class="pre">AND</span></code> <strong>.</strong> The following query will iterate over
 all waveforms with a network starting with <code class="docutils literal notranslate"><span class="pre">T</span></code>, but not the <code class="docutils literal notranslate"><span class="pre">TA</span></code>
-(USArray) network. Wildcards are resolved by the <a class="reference external" href="https://docs.python.org/3/library/fnmatch.html#module-fnmatch" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a> module.</p>
+(USArray) network. Wildcards are resolved by the <a class="reference external" href="https://docs.python.org/3/library/fnmatch.html#module-fnmatch" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a> module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;T*&quot;</span><span class="p">,</span>
                           <span class="n">ds</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">network</span> <span class="o">!=</span> <span class="s2">&quot;TA&quot;</span><span class="p">):</span>
     <span class="o">...</span>
@@ -426,7 +426,7 @@ These are not wildcarded as <code class="docutils literal notranslate"><span cla
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.7.4',
+            VERSION:'0.7.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -435,7 +435,6 @@ These are not wildcarded as <code class="docutils literal notranslate"><span cla
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 

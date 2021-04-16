@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ASDF Data Set &mdash; pyasdf 0.7.4 documentation</title>
+  <title>ASDF Data Set &mdash; pyasdf 0.7.5 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pyasdf 0.7.4 documentation" href="index.html"/>
+    <link rel="top" title="pyasdf 0.7.5 documentation" href="index.html"/>
         <link rel="up" title="API" href="api.html"/>
         <link rel="next" title="Exceptions" href="exceptions.html"/>
         <link rel="prev" title="API" href="api.html"/> 
@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                0.7.4
+                0.7.5
               </div>
             
           
@@ -162,7 +162,7 @@
 <p>Python implementation of the Adaptable Seismic Data Format (ASDF).</p>
 <dl class="field-list simple">
 <dt class="field-odd">copyright</dt>
-<dd class="field-odd"><p>Lion Krischer (<a class="reference external" href="mailto:lion&#46;krischer&#37;&#52;&#48;gmail&#46;com">lion<span>&#46;</span>krischer<span>&#64;</span>gmail<span>&#46;</span>com</a>), 2013-2020</p>
+<dd class="field-odd"><p>Lion Krischer (<a class="reference external" href="mailto:lion&#46;krischer&#37;&#52;&#48;gmail&#46;com">lion<span>&#46;</span>krischer<span>&#64;</span>gmail<span>&#46;</span>com</a>), 2013-2021</p>
 </dd>
 <dt class="field-even">license</dt>
 <dd class="field-even"><p>BSD 3-Clause (“BSD New” or “BSD Simplified”)</p>
@@ -170,14 +170,14 @@
 </dl>
 <dl class="py class">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet">
-<em class="property">class </em><code class="sig-prename descclassname">pyasdf.asdf_data_set.</code><code class="sig-name descname">ASDFDataSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">compression</span><span class="o">=</span><span class="default_value">'gzip-3'</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">debug</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">mpi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'a'</span></em>, <em class="sig-param"><span class="n">single_item_read_limit_in_mb</span><span class="o">=</span><span class="default_value">4096.0</span></em>, <em class="sig-param"><span class="n">format_version</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyasdf.asdf_data_set.</span></code><code class="sig-name descname"><span class="pre">ASDFDataSet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gzip-3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single_item_read_limit_in_mb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Object dealing with Adaptable Seismic Data Format (ASDF).</p>
 <p>Central object of this Python package.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The filename of the HDF5 file (to be).</p></li>
-<li><p><strong>compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>The compression to use. Defaults to
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The filename of the HDF5 file (to be).</p></li>
+<li><p><strong>compression</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <p>The compression to use. Defaults to
 <code class="docutils literal notranslate"><span class="pre">&quot;gzip-3&quot;</span></code> which yielded good results in the past. Will
 only be applied to newly created data sets. Existing ones are not
 touched. Using parallel I/O will also disable compression as it
@@ -194,19 +194,19 @@ but fast) to 9 (best but slow)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;szip-nn-10&quot;</span></code>: szip compression</p></li>
 </ul>
 </p></li>
-<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Turn the shuffle filter on or off. Turning it on
+<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – Turn the shuffle filter on or off. Turning it on
 oftentimes increases the compression ratio at the expense of
 some speed.</p></li>
-<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If True, print debug messages. Potentially very verbose.</p></li>
-<li><p><strong>mpi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Force MPI on/off. Don’t touch this unless you have a
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – If True, print debug messages. Potentially very verbose.</p></li>
+<li><p><strong>mpi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – Force MPI on/off. Don’t touch this unless you have a
 reason.</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The mode the file is opened in. Passed to the
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The mode the file is opened in. Passed to the
 underlying <code class="xref py py-class docutils literal notranslate"><span class="pre">h5py.File</span></code> constructor. pyasdf expects to be
 able to write to files for many operations so it might result in
 strange errors if a read-only mode is used. Nonetheless this is
 quite useful for some use cases as long as one is aware of the
 potential repercussions.</p></li>
-<li><p><strong>single_item_read_limit_in_mb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – This limits the amount of waveform
+<li><p><strong>single_item_read_limit_in_mb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – This limits the amount of waveform
 data that can be read with a simple attribute or dictionary
 access. Some ASDF files can get very big and this raises an
 error if one tries to access more then the specified value. This
@@ -221,7 +221,7 @@ is fairly expensive.</p></li>
 </dl>
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data">
-<code class="sig-name descname">add_auxiliary_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">data_type</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">parameters</span></em>, <em class="sig-param"><span class="n">provenance_id</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_auxiliary_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_auxiliary_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provenance_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_auxiliary_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds auxiliary data to the file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -272,7 +272,7 @@ auxiliary data.</p>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data_file">
-<code class="sig-name descname">add_auxiliary_data_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename_or_object</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">provenance_id</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_auxiliary_data_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_auxiliary_data_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_or_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provenance_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_auxiliary_data_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_auxiliary_data_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Special function adding a file or file like object as an auxiliary
 data object denoting a file. This is very useful to store arbitrary
 files in ASDF.</p>
@@ -295,13 +295,13 @@ given as a qualified name, e.g. <code class="docutils literal notranslate"><span
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.add_provenance_document">
-<code class="sig-name descname">add_provenance_document</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">document</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_provenance_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_provenance_document" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_provenance_document</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_provenance_document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_provenance_document" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a provenance document to the current ASDF file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>document</strong> (<em>Filename</em><em>, </em><em>file-like objects</em><em> or </em><em>prov document.</em>) – The document to add.</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the document within ASDF. Must be lowercase
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The name of the document within ASDF. Must be lowercase
 alphanumeric with optional underscores. If not given, it will
 autogenerate one. If given and it already exists, it will be
 overwritten.</p></li>
@@ -312,7 +312,7 @@ overwritten.</p></li>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.add_quakeml">
-<code class="sig-name descname">add_quakeml</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_quakeml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_quakeml" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_quakeml</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_quakeml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_quakeml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a QuakeML file or an existing ObsPy event to the data set.</p>
 <p>An exception will be raised if an event is attempted to be added
 that already exists within the data set. Duplicates are detected
@@ -347,7 +347,7 @@ existing one.</p>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.add_stationxml">
-<code class="sig-name descname">add_stationxml</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stationxml</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_stationxml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_stationxml" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_stationxml</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stationxml</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_stationxml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_stationxml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the StationXML to the data set object.</p>
 <p>This does some fairly exhaustive processing and will happily
 split the StationXML file and merge it with existing ones.</p>
@@ -364,7 +364,7 @@ object containing the same.</p>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.add_waveforms">
-<code class="sig-name descname">add_waveforms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">waveform</span></em>, <em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">event_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">origin_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">magnitude_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">focal_mechanism_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">provenance_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">labels</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_waveforms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_waveforms</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focal_mechanism_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provenance_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.add_waveforms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds one or more waveforms to the current ASDF file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -372,7 +372,7 @@ object containing the same.</p>
 <li><p><strong>waveform</strong> (<a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a>,
 <a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.trace.Trace.html#obspy.core.trace.Trace" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.trace.Trace</span></code></a>, str, …) – The waveform to add. Can either be an ObsPy Stream or
 Trace object or something ObsPy can read.</p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The path that will be given to all waveform files. It is
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The path that will be given to all waveform files. It is
 mandatory for all traces and facilitates identification of the data
 within one ASDF volume. The <code class="docutils literal notranslate"><span class="pre">&quot;raw_record&quot;</span></code> path is,
 by convention, reserved to raw, recorded, unprocessed data.</p></li>
@@ -461,7 +461,7 @@ in which case multiple associations will be stored in the file.</p>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.append_waveforms">
-<code class="sig-name descname">append_waveforms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">waveform</span></em>, <em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.append_waveforms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.append_waveforms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">append_waveforms</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.append_waveforms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.append_waveforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append waveforms to an existing data array if possible.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -530,7 +530,7 @@ over.</p>
 <li><p><strong>waveform</strong> (<a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a>,
 <a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.trace.Trace.html#obspy.core.trace.Trace" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.trace.Trace</span></code></a>, str, …) – The waveform to add. Can either be an ObsPy Stream
 or Trace object or something ObsPy can read.</p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The path that will be given to all waveform files. It is
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The path that will be given to all waveform files. It is
 mandatory for all traces and facilitates identification of the data
 within one ASDF volume. The <code class="docutils literal notranslate"><span class="pre">&quot;raw_record&quot;</span></code> path is,
 by convention, reserved to raw, recorded, unprocessed data.</p></li>
@@ -541,13 +541,13 @@ by convention, reserved to raw, recorded, unprocessed data.</p></li>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.asdf_format_version_in_file">
-<em class="property">property </em><code class="sig-name descname">asdf_format_version_in_file</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.asdf_format_version_in_file" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">asdf_format_version_in_file</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.asdf_format_version_in_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the version of the ASDF version specified in the file.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.events">
-<em class="property">property </em><code class="sig-name descname">events</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.events" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">events</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.events" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all events stored in the data set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -558,40 +558,40 @@ by convention, reserved to raw, recorded, unprocessed data.</p></li>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.filename">
-<em class="property">property </em><code class="sig-name descname">filename</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.filename" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">filename</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the path of the underlying file on the filesystem. Works in most
 circumstances.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.filesize">
-<em class="property">property </em><code class="sig-name descname">filesize</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.filesize" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">filesize</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.filesize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the current size of the file.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.flush">
-<code class="sig-name descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.flush" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">flush</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush the underlying HDF5 file.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.get_all_coordinates">
-<code class="sig-name descname">get_all_coordinates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_all_coordinates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_all_coordinates" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_all_coordinates</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_all_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_all_coordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a dictionary of the coordinates of all stations.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.get_data_for_tag">
-<code class="sig-name descname">get_data_for_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">station_name</span></em>, <em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_data_for_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_data_for_tag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_data_for_tag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_data_for_tag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_data_for_tag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the waveform and station data for the requested station and
 path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>station_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – A string with network id and station id,
+<li><p><strong>station_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – A string with network id and station id,
 e.g. <code class="docutils literal notranslate"><span class="pre">&quot;IU.ANMO&quot;</span></code></p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The path of the waveform.</p></li>
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The path of the waveform.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -606,7 +606,7 @@ e.g. <code class="docutils literal notranslate"><span class="pre">&quot;IU.ANMO&
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.get_provenance_document">
-<code class="sig-name descname">get_provenance_document</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">document_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_provenance_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_provenance_document" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_provenance_document</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_provenance_document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_provenance_document" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve a provenance document with a certain name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -617,7 +617,7 @@ e.g. <code class="docutils literal notranslate"><span class="pre">&quot;IU.ANMO&
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.get_waveforms">
-<code class="sig-name descname">get_waveforms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">network</span></em>, <em class="sig-param"><span class="n">station</span></em>, <em class="sig-param"><span class="n">location</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">starttime</span></em>, <em class="sig-param"><span class="n">endtime</span></em>, <em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">automerge</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_waveforms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_waveforms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_waveforms</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starttime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endtime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">automerge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.get_waveforms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.get_waveforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Directly access waveforms.</p>
 <p>This enables a more exact specification of what one wants to
 retrieve from an ASDF file. Most importantly it honors the start and
@@ -626,14 +626,14 @@ this is especially important for large, continuous data sets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The network code. Can contain wildcards.</p></li>
-<li><p><strong>station</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The station code. Can contain wildcards.</p></li>
-<li><p><strong>location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The location code. Can contain wildcards.</p></li>
-<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The channel code. Can contain wildcards.</p></li>
+<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The network code. Can contain wildcards.</p></li>
+<li><p><strong>station</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The station code. Can contain wildcards.</p></li>
+<li><p><strong>location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The location code. Can contain wildcards.</p></li>
+<li><p><strong>channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The channel code. Can contain wildcards.</p></li>
 <li><p><strong>starttime</strong> (<a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.utcdatetime.UTCDateTime</span></code></a>.) – The time of the first sample.</p></li>
 <li><p><strong>endtime</strong> (<a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.utcdatetime.UTCDateTime.html#obspy.core.utcdatetime.UTCDateTime" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.utcdatetime.UTCDateTime</span></code></a>.) – The time of the last sample.</p></li>
-<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The tag to extract.</p></li>
-<li><p><strong>automerge</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Automatically merge adjacent traces if they are
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The tag to extract.</p></li>
+<li><p><strong>automerge</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – Automatically merge adjacent traces if they are
 exactly adjacent (e.g. last sample from previous trace + first
 sample of next trace are one delta apart).</p></li>
 </ul>
@@ -643,7 +643,7 @@ sample of next trace are one delta apart).</p></li>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.ifilter">
-<code class="sig-name descname">ifilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">query_objects</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.ifilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.ifilter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">ifilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">query_objects</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.ifilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.ifilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an iterator containing only the filtered information. Usage
 is fairly complex, a separate documentation page for
 <a class="reference internal" href="querying_data.html"><span class="doc">Querying a Data Set</span></a> is available - here is just a quick example:</p>
@@ -657,20 +657,20 @@ is fairly complex, a separate documentation page for
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.mpi">
-<em class="property">property </em><code class="sig-name descname">mpi</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.mpi" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">mpi</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.mpi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a named tuple with <code class="docutils literal notranslate"><span class="pre">comm</span></code>, <code class="docutils literal notranslate"><span class="pre">rank</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code>, and <code class="docutils literal notranslate"><span class="pre">MPI</span></code>
 if run with MPI and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.pretty_filesize">
-<em class="property">property </em><code class="sig-name descname">pretty_filesize</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.pretty_filesize" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">pretty_filesize</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.pretty_filesize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a pretty string representation of the size of the file.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">process_function</span></em>, <em class="sig-param"><span class="n">output_filename</span></em>, <em class="sig-param"><span class="n">tag_map</span></em>, <em class="sig-param"><span class="n">traceback_limit</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.process" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceback_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process the contents of an <code class="docutils literal notranslate"><span class="pre">ASDF</span></code> file in parallel.</p>
 <p>Applies a function to the contents of the current data set and
 writes the output to a new <code class="docutils literal notranslate"><span class="pre">ASDF</span></code> file. Can be run with and
@@ -684,9 +684,9 @@ An <a class="reference external" href="https://docs.obspy.org/packages/autogen/o
 <a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.inventory.inventory.Inventory.html#obspy.core.inventory.inventory.Inventory" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.inventory.inventory.Inventory</span></code></a> object. It should
 return a <a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.2.0) v1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.stream.Stream</span></code></a> object which will
 then be written to the new file.</p></li>
-<li><p><strong>output_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The output filename. Must not yet exist.</p></li>
-<li><p><strong>tag_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – A dictionary mapping the input tags to output tags.</p></li>
-<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The length of the traceback printed if an
+<li><p><strong>output_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The output filename. Must not yet exist.</p></li>
+<li><p><strong>tag_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – A dictionary mapping the input tags to output tags.</p></li>
+<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The length of the traceback printed if an
 error occurs in one of the workers.</p></li>
 </ul>
 </dd>
@@ -695,7 +695,7 @@ error occurs in one of the workers.</p></li>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.process_two_files_without_parallel_output">
-<code class="sig-name descname">process_two_files_without_parallel_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_ds</span></em>, <em class="sig-param"><span class="n">process_function</span></em>, <em class="sig-param"><span class="n">traceback_limit</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.process_two_files_without_parallel_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.process_two_files_without_parallel_output" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">process_two_files_without_parallel_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceback_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.process_two_files_without_parallel_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.process_two_files_without_parallel_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process data in two data sets.</p>
 <p>This is mostly useful for comparing data in two data sets in any
 number of scenarios. It again takes a function and will apply it on
@@ -709,7 +709,7 @@ each station that is common in both data sets. Please see the
 <li><p><strong>process_function</strong> – The processing function takes two
 parameters: The station group from this data set and the matching
 station group from the other data set.</p></li>
-<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The length of the traceback printed if an
+<li><p><strong>traceback_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The length of the traceback printed if an
 error occurs in one of the workers.</p></li>
 </ul>
 </dd>
@@ -722,7 +722,7 @@ only be available on rank 0.</p>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.validate">
-<code class="sig-name descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.validate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">validate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/asdf_data_set.html#ASDFDataSet.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate and ASDF file. It currently checks that each waveform file
 has a corresponding station file.</p>
 <p>This does not (by far) replace the actual ASDF format validator.</p>
@@ -730,7 +730,7 @@ has a corresponding station file.</p>
 
 <dl class="py method">
 <dt id="pyasdf.asdf_data_set.ASDFDataSet.waveform_tags">
-<em class="property">property </em><code class="sig-name descname">waveform_tags</code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.waveform_tags" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">waveform_tags</span></code><a class="headerlink" href="#pyasdf.asdf_data_set.ASDFDataSet.waveform_tags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a set with all tags in the dataset.</p>
 </dd></dl>
 
@@ -779,7 +779,7 @@ has a corresponding station file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.7.4',
+            VERSION:'0.7.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -788,7 +788,6 @@ has a corresponding station file.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 

@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Large Continuous Data Sets &mdash; pyasdf 0.7.4 documentation</title>
+  <title>Large Continuous Data Sets &mdash; pyasdf 0.7.5 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pyasdf 0.7.4 documentation" href="index.html"/>
+    <link rel="top" title="pyasdf 0.7.5 documentation" href="index.html"/>
         <link rel="up" title="Detailed Explanations" href="detailed_explanations.html"/>
         <link rel="prev" title="Working With Station Data" href="station_data.html"/> 
 
@@ -75,7 +75,7 @@
             
             
               <div class="version">
-                0.7.4
+                0.7.5
               </div>
             
           
@@ -186,7 +186,7 @@ from pyasdf import ASDFDataSet
 
 <span class="nv">ds</span> <span class="o">=</span> ASDFDataSet<span class="o">(</span><span class="s2">&quot;out_gzip3.h5&quot;</span>, <span class="nv">compression</span><span class="o">=</span><span class="s2">&quot;gzip-3&quot;</span><span class="o">)</span>
 
-<span class="k">for</span> filename in tqdm<span class="o">(</span>glob.glob<span class="o">(</span><span class="s2">&quot;./EHZ.D/BW.ALTM.*&quot;</span><span class="o">))</span>:
+<span class="k">for</span> filename <span class="k">in</span> tqdm<span class="o">(</span>glob.glob<span class="o">(</span><span class="s2">&quot;./EHZ.D/BW.ALTM.*&quot;</span><span class="o">))</span>:
     ds.append_waveforms<span class="o">(</span>filename, <span class="nv">tag</span><span class="o">=</span><span class="s2">&quot;raw_recording&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
@@ -290,7 +290,7 @@ suitable for very big data arrays.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.7.4',
+            VERSION:'0.7.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -299,7 +299,6 @@ suitable for very big data arrays.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 
