@@ -860,13 +860,13 @@ class ASDFDataSet(object):
 
         # Modify the data indices to restrict the data if necessary.
         if starttime is not None and starttime > data_starttime:
-            offset = max(0, int((starttime - data_starttime) // dt))
+            offset = max(0, int((starttime - data_starttime) / dt + 0.5))
             idx_start = offset
             # Also modify the data_starttime here as it changes the actually
             # read data.
             data_starttime += offset * dt
         if endtime is not None and endtime < data_endtime:
-            offset = max(0, int((data_endtime - endtime) // dt))
+            offset = max(0, int((data_endtime - endtime) / dt + 0.5))
             idx_end -= offset
 
         # Check the size against the limit.
